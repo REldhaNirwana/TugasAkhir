@@ -7,7 +7,7 @@
 <div class="card">
     <div class="card-body">
     <div class="card-title">
-      <a href="m_gedung">
+      <a href="m_fasilitas/add">
         <button type="button" class="btn btn-primary">Tambah Data</button>
       </a>
     </div>
@@ -17,9 +17,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>ID Gedung</th>
-                        <th>Nama</th>
-                        <th>Foto</th>
+                        <th>Fasilitas</th>
                         <th>Deskripsi</th>
                         <th>Action</th>
                     </tr>
@@ -27,24 +25,23 @@
                 
                 <tbody>
                     <?php $no = 0; ?>
-                    
+                     @foreach($m_fasilitas as $row)
                     <tr>
                         <th scope="row"><?php $no++;
                                             echo $no; ?></th>             
-                            <td>{{$row->id_gedung}}</td>
-                            <td>{{$row->nama}}</td>
-                            <td>{{$row->foto}}</td>
+                            <td>{{$row->fasilitas}}</td>
                             <td>{{$row->deskripsi}}</td>
 
                         <td>
-                            <a href="/m_gedung/delete/{{$row->id_gedung}}">
+                            <a href="/m_fasilitas/delete/{{$row->fasilitas}}">
                                 <button type="button" class="btn btn-outline-danger btn-sm">Hapus</button>
                             </a>
-                            <a href="/m_gedung/edit/{{$row->id_gedung}}">
+                            <a href="/m_fasilitas/edit/{{$row->fasilitas}}">
                                 <button type="button" class="btn btn-outline-primary btn-sm">Edit</button>
                             </a>
                          </td>
                     </tr>
+                @endforeach
                 </tbody>
             </table>
         </div>
