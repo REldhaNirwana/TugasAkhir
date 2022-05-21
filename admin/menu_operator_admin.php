@@ -8,18 +8,22 @@
             case'm_gedung' :
                 include"admin/m_gedung.php";
                 break;
-            case'm_gedungadd.php' :
-                include"admin/m_gedungadd.php";
+            case'tambah_gedung.php' :
+                include"admin/tambah_gedung.php";
                 break;
-            case'm_gedungedit.php' :
-                include"admin/m_gedungedit.php";
+            case'hapus_gedung.php' :
+                include"admin/hapus_gedung.php";
                 break;
+            case'edit_gedung.php' :
+                include"admin/edit_gedung.php";
+                break;
+            
             
             case'fasilitas' :
                 include"admin/m_fasilitas.php";
                 break;
             case'fasilitasadd' :
-                include"admin/m_fasilitasadd.php";
+                include"admin/tambah_fasilitas.php";
                 break;    
             case'fasilitasedit' :
                 include"admin/m_fasilitasedit.php";
@@ -29,7 +33,7 @@
                 include"admin/m_paket.php";
                 break;
             case'paketadd' :
-                include"admin/m_paketadd.php";
+                include"admin/tambah_paket.php";
                 break;    
             case'paketedit' :
                 include"admin/m_paketedit.php";
