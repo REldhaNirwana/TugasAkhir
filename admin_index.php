@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Dashboard</title>
+    <title>Gedung Serbaguna Bahari Sejahtera</title>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,31 +34,31 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="?url=dashboard">
+                <a class="nav-link" href="?url=admin_dashboard">
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=m_gedung">
+                <a class="nav-link" href="?url=admin_gedung">
                     <span>Manajemen Gedung</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=fasilitas">
+                <a class="nav-link" href="?url=admin_fasilitas">
                     <span>Manajemen Fasilitas</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=paket">
+                <a class="nav-link" href="?url=admin_paket">
                     <span>Manajemen Paket</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=jadwal">
+                <a class="nav-link" href="?url=admin_jadwal">
                     <span>Manajemen Jadwal</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=sewa">
+                <a class="nav-link" href="?url=admin_sewa">
                     <span>Manajemen Transaksi</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=histori">
+                <a class="nav-link" href="?url=admin_histori">
                     <span>Manajemen Data Penyewaan</span></a>
             </li>
             <li class="nav-item">
@@ -199,7 +199,7 @@
                 <!-- End of Topbar -->
 
                 <?php
-                        include 'admin/menu_operator_admin.php'
+                        include 'admin_menu_operator.php'
                     ?>
             </div>
             <!-- End of Main Content -->
