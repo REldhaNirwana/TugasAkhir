@@ -5,28 +5,9 @@ if(!$koneksi){
     die("koneksi dengan database gagal: ".mysql_connect_error());
 }
 
-// membuat fungsi query dalam bentuk array
-function query($query)
-{
-    // Koneksi database
-    global $koneksi;
-
-    $result = mysqli_query($koneksi, $query);
-
-    // membuat variable array
-    $rows = [];
-
-    // mengambil semua data dalam bentuk array
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
-
-    return $rows;
-}
 
 //Tambah gedung
-    function tambahgedung($data)
-    {
+function tambahgedung($data){
         global $koneksi;
     
         $id_gedung = htmlspecialchars($data['id_gedung']);
@@ -41,23 +22,17 @@ function query($query)
         $sql = "INSERT INTO gedung VALUES ('$id_gedung','$nama_gedung','$foto_gedung','$deskripsi')";
     
         mysqli_query($koneksi, $sql);
-    
-     
-       return mysqli_affected_rows($koneksi);
+        return mysqli_affected_rows($koneksi);
     
     }
 
-// Membuat fungsi ubah
-function editgedung($data)
-{
+// Membuat fungsi edit
+function editgedung($data){
     global $koneksi;
 
     $id_gedung = htmlspecialchars($data['id_gedung']);
     $nama_gedung = htmlspecialchars($data['nama_gedung']);
-    //$foto_gedung = upload();
     $deskripsi = htmlspecialchars($data['deskripsi']);
-    
-    //$gambar = upload();
 
     $fotoLama = $data['fotoLama'];
 
@@ -67,12 +42,13 @@ function editgedung($data)
         $foto_gedung = upload();
     }
 
-    $sql = "UPDATE gedung SET id_gedung = '$id_gedung', nama_gedung = '$nama_gedung', foto_gedung = '$foto_gedung', deskripsi = '$deskripsi' WHERE id_gedung = '$id_gedung'";
+    $sql = "UPDATE gedung SET  nama_gedung = '$nama_gedung', foto_gedung = '$foto_gedung', deskripsi = '$deskripsi' WHERE id_gedung = '$id_gedung'";
 
     mysqli_query($koneksi, $sql);
 
     return mysqli_affected_rows($koneksi);
 }
+// Membuat fungsi upload foto
 function upload()
 {
     // Syarat

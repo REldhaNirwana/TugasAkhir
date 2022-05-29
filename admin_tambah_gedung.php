@@ -1,4 +1,4 @@
-<!-- Begin Page Content -->
+
 <?php
 // Memanggil atau membutuhkan file function.php
 require 'function.php';
@@ -7,7 +7,7 @@ require 'function.php';
 if (isset($_POST['simpan'])) {
     if (tambahgedung($_POST) > 0) {
          echo "<script>
-                alert('Data pinjam berhasil ditambahkan!');
+                alert('Data berhasil ditambahkan');
                 document.location.href ='?url=admin_gedung';
             </script>";
     
@@ -51,6 +51,7 @@ if (isset($_POST['simpan'])) {
             </div>
             
             <div class="text-center">
+                <a href="?url=admin_gedung" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                
             </div>

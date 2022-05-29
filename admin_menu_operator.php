@@ -20,7 +20,7 @@
             
             
             case'fasilitas' :
-                include"admin/m_fasilitas.php";
+                include"admin_fasilitas.php";
                 break;
             case'fasilitasadd' :
                 include"admin/tambah_fasilitas.php";
@@ -29,8 +29,8 @@
                 include"admin/m_fasilitasedit.php";
                 break; 
 
-            case'paket' :
-                include"admin/m_paket.php";
+            case'admin_paket' :
+                include"admin_paket.php";
                 break;
             case'paketadd' :
                 include"admin/tambah_paket.php";
