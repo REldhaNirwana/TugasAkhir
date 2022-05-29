@@ -1,6 +1,6 @@
 <?php 
 require 'function.php';
-$jadwal = query("SELECT * FROM jadwal ORDER BY id_pesan DESC");
+// $jadwal = query("SELECT * FROM jadwal ORDER BY id_pesan DESC");
 ?>
 
 <div class="container-fluid">
@@ -28,25 +28,31 @@ $jadwal = query("SELECT * FROM jadwal ORDER BY id_pesan DESC");
                 </tr>
             </thead>
             <tbody>
-            <?php $no = 1; ?>
-                        <?php foreach ($id_pesan as $row) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $row['id_pesan']; ?></td>
-                                <td><?= $row['tanggal']; ?></td>
-                                <td><?= $row['tahun']; ?></td>
-                                <td><?= $row['id_paket']; ?></td>
-                                <td><?= $row['status']; ?></td>
-                                <td><?= $row['deskripsi']; ?></td>
-                                <td>
-                                    <a href= "admin_index.php?url=admin_edit_jadwal.php&id_pesan=<?= $row['id_pesan']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
+            <?php 
+            $no = 1;
 
-                                    <a href="admin_hapus_jadwal.php?id_pesan=<?= $row['id_pesan'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['id_pesan']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+            $tampil = mysqli_query($koneksi, "SELECT * FROM jadwal ORDER BY id_pesan DESC");
+
+            while($hasil = mysqli_fetch_array($tampil)){
+            ?>
+                       
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $hasil['id_pesan']; ?></td>
+                    <td><?= $hasil['tanggal']; ?></td>
+                    <td><?= $hasil['tahun']; ?></td>
+                    <td><?= $hasil['id_paket']; ?></td>
+                    <td><?= $hasil['status']; ?></td>
+                    <td><?= $hasil['deskripsi']; ?></td>
+                    <td>               
+                        <a href= "admin_index.php?url=admin_edit_jadwal.php&id_pesan=<?= $hasil['id_pesan']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
+                        <a href="admin_hapus_pesan.php?id_pesan=<?= $hasil['id_pesan'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['id_pesan']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
+                    </td>
+                </tr>
+            <?php 
+        } ?>
             </tbody>
-    
+
         </table>
 
         </div>

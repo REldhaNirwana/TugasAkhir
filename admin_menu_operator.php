@@ -24,6 +24,9 @@
             case'admin_tambah_fasilitas' :                    
                 include"admin_tambah_fasilitas.php";
                 break;    
+            case'admin_hapus_fasilitas.php' :
+                include"admin_hapus_fasilitas.php";
+                break;
             case'admin_edit_fasilitas' :
                 include"admin_edit_fasilitas.php";
                 break; 
@@ -34,6 +37,9 @@
             case'admin_tambah_paket' :                    
                 include"admin_tambah_paket.php";
                 break;    
+            case'admin_hapus_paket.php' :
+                include"admin_hapus_paket.php";
+                break;
             case'admin_edit_paket' :
                 include"admin_edit_paket.php";
                 break; 

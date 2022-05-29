@@ -9,14 +9,14 @@ require 'function.php';
     if (isset($_POST['simpanperubahan'])) {
         if (editgedung($_POST) > 0) {
              echo "<script>
-                    alert('Data pinjam berhasil diubah!');
+                    alert('Data gedung berhasil diubah!');
                     document.location.href ='admin_index.php?url=admin_gedung';
                 </script>";
         
         } else {
             // Jika fungsi tambah dari 0/data tidak tersimpan, maka munculkan alert dibawah
             echo "<script>
-                    alert('Data pinjam gagal diubah!');
+                    alert('Data gedung gagal diubah!');
                 </script>";
         }
     }

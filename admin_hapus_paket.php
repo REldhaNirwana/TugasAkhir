@@ -3,7 +3,7 @@
 require 'function.php';
 if(isset($_GET['id_paket'])) {
     $id_paket =htmlspecialchars($_GET["id_paket"]);
-    $sql ="delete from paket where id_paket = '$id_paket'";
+    $sql ="delete from paket where id_gedung = '$id_gedung'";
     $hasil = mysqli_query($koneksi,$sql);
 
     if($hasil){

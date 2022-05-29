@@ -1,6 +1,6 @@
 <?php 
 require 'function.php';
-$datapenyewa = query("SELECT * FROM datapenyewa ORDER BY id_pesan DESC");
+//$datapenyewa = query("SELECT * FROM datapenyewa ORDER BY id_pesan DESC");
 ?>
 
 <div class="container-fluid">

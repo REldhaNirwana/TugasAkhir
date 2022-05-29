@@ -54,23 +54,23 @@
                     <span>Manajemen Jadwal</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=admin_sewa">
+                <a class="nav-link" href="?url=admin_transaksi">
                     <span>Manajemen Transaksi</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=admin_histori">
+                <a class="nav-link" href="?url=admin_datapenyewa">
                     <span>Manajemen Data Penyewaan</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=histori">
+                <a class="nav-link" href="?url=laporan_keuangan">
                     <span>Laporan Keuangan</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=histori">
+                <a class="nav-link" href="?url=admin_ganti_rugi">
                     <span>Info Ganti Rugi</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=histori">
+                <a class="nav-link" href="?url=admin_kritik_saran">
                     <span>Info Kritik dan Saran</span></a>
             </li>
 

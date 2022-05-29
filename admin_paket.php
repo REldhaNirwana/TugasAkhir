@@ -1,6 +1,6 @@
 <?php 
 require 'function.php';
-$paket = query("SELECT * FROM paket ORDER BY id_paket DESC");
+// $paket = query("SELECT * FROM paket ORDER BY id_paket DESC");
 ?>
 
 <div class="container-fluid">
@@ -25,21 +25,27 @@ $paket = query("SELECT * FROM paket ORDER BY id_paket DESC");
                 </tr>
             </thead>
             <tbody>
-            <?php $no = 1; ?>
-                        <?php foreach ($paket as $row) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $row['id_paket']; ?></td>
-                                <td><?= $row['deskripsi']; ?></td>
-                                <td>
-                                    <a href= "admin_index.php?url=admin_edit_paket.php&id_paket=<?= $row['id_paket']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
+            <?php 
+            $no = 1;
 
-                                    <a href="admin_hapus_paket.php?id_paket=<?= $row['id_paket'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['id_paket']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+            $tampil = mysqli_query($koneksi, "SELECT * FROM paket ORDER BY id_paket DESC");
+
+            while($hasil = mysqli_fetch_array($tampil)){
+            ?>
+                       
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $hasil['id_paket']; ?></td>
+                    <td><?= $hasil['deskripsi']; ?></td>
+                    <td>               
+                        <a href= "admin_index.php?url=admin_edit_paket.php&id_paket=<?= $hasil['id_paket']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
+                        <a href="admin_hapus_paket.php?id_paket=<?= $hasil['id_paket'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama_paket']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
+                    </td>
+                </tr>
+            <?php 
+        } ?>
             </tbody>
-    
+
         </table>
 
         </div>
@@ -48,4 +54,3 @@ $paket = query("SELECT * FROM paket ORDER BY id_paket DESC");
         </div>
         </div>
         </div>
-        

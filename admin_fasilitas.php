@@ -1,6 +1,6 @@
 <?php 
 require 'function.php';
-$fasilitas = query("SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
+// $fasilitas = query("SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
 ?>
 
 <div class="container-fluid">
@@ -20,28 +20,34 @@ $fasilitas = query("SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
                 <tr>
                 <th>No</th>
                 <th>Fasilitas</th>
-                <th>Foto</th>
+                <th>Foto Fasilitas</th>
                 <th>Deskripsi</th>
                 <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-            <?php $no = 1; ?>
-                        <?php foreach ($fasilitas as $row) : ?>
-                            <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $row['id_fasilitas']; ?></td>
-                                <td><img style="width:120px;" src="img/<?= $row['foto_paket']; ?>"></td>
-                                <td><?= $row['deskripsi']; ?></td>
-                                <td>
-                                    <a href= "admin_index.php?url=admin_edit_fasilitas.php&id_fasilitas=<?= $row['id_fasilitas']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
+            <?php 
+            $no = 1;
 
-                                    <a href="admin_hapus_fasilitas.php?id_fasilitas=<?= $row['id_fasilitas'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['id_fasilitas']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
+            $tampil = mysqli_query($koneksi, "SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
+
+            while($hasil = mysqli_fetch_array($tampil)){
+            ?>
+                       
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $hasil['id_fasilitas']; ?></td>
+                    <td><img style="width:120px;" src="img/<?= $hasil['foto_fasilitas']; ?>"></td>
+                    <td><?= $hasil['deskripsi']; ?></td>
+                    <td>               
+                        <a href= "admin_index.php?url=admin_edit_fasilitas.php&id_fasilitas=<?= $hasil['id_fasilitas']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
+                        <a href="admin_hapus_fasilitas.php?id_fasilitas=<?= $hasil['id_fasilitas'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama_fasilitas']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
+                    </td>
+                </tr>
+            <?php 
+        } ?>
             </tbody>
-    
+
         </table>
 
         </div>

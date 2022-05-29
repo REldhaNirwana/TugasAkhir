@@ -1,4 +1,4 @@
-<!-- Begin Page Content -->
+
 <?php
 // Memanggil atau membutuhkan file function.php
 require 'function.php';
@@ -7,7 +7,7 @@ require 'function.php';
 if (isset($_POST['simpan'])) {
     if (tambahfasilitas($_POST) > 0) {
          echo "<script>
-                alert('Data fasilitas berhasil ditambahkan!');
+                alert('Data fasilitas berhasil ditambahkan');
                 document.location.href ='?url=admin_fasilitas';
             </script>";
     
@@ -26,13 +26,13 @@ if (isset($_POST['simpan'])) {
         <!-- Horizontal Form -->
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="row mb-3">
-                <label for="id_gedung" class="col-sm-2 col-form-label">Fasilitas</label>
+                <label for="id_fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="id_fasilitas" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="foto_fasilitas" class="col-sm-2 col-form-label">Foto</label>
+                <label for="foto_fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
                 <div class="col-sm-10">
                     <input type="file" name="foto_fasilitas" id="foto_fasilitas" class="isian-formulir isian-formulir-border" required>
                 </div>
@@ -45,6 +45,7 @@ if (isset($_POST['simpan'])) {
             </div>
             
             <div class="text-center">
+                <a href="?url=admin_fasilitas" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                
             </div>

@@ -5,28 +5,9 @@ if(!$koneksi){
     die("koneksi dengan database gagal: ".mysqli_connect_error());
 }
 
-// membuat fungsi query dalam bentuk array
-function query($query)
-{
-    // Koneksi database
-    global $koneksi;
-
-    $result = mysqli_query($koneksi, $query);
-
-    // membuat variable array
-    $rows = [];
-
-    // mengambil semua data dalam bentuk array
-    while ($row = mysqli_fetch_assoc($result)) {
-        $rows[] = $row;
-    }
-
-    return $rows;
-}
 
 //Tambah gedung
-    function tambahgedung($data)
-    {
+function tambahgedung($data){
         global $koneksi;
     
         $id_gedung = htmlspecialchars($data['id_gedung']);
@@ -41,23 +22,17 @@ function query($query)
         $sql = "INSERT INTO gedung VALUES ('$id_gedung','$nama_gedung','$foto_gedung','$deskripsi')";
     
         mysqli_query($koneksi, $sql);
-    
-     
-       return mysqli_affected_rows($koneksi);
+        return mysqli_affected_rows($koneksi);
     
     }
 
-// Membuat fungsi ubah
-function editgedung($data)
-{
+// Membuat fungsi edit
+function editgedung($data){
     global $koneksi;
 
     $id_gedung = htmlspecialchars($data['id_gedung']);
     $nama_gedung = htmlspecialchars($data['nama_gedung']);
-    //$foto_gedung = upload();
     $deskripsi = htmlspecialchars($data['deskripsi']);
-    
-    //$gambar = upload();
 
     $fotoLama = $data['fotoLama'];
 
@@ -67,63 +42,56 @@ function editgedung($data)
         $foto_gedung = upload();
     }
 
-    $sql = "UPDATE gedung SET id_gedung = '$id_gedung', nama_gedung = '$nama_gedung', foto_gedung = '$foto_gedung', deskripsi = '$deskripsi' WHERE id_gedung = '$id_gedung'";
+    $sql = "UPDATE gedung SET  nama_gedung = '$nama_gedung', foto_gedung = '$foto_gedung', deskripsi = '$deskripsi' WHERE id_gedung = '$id_gedung'";
 
     mysqli_query($koneksi, $sql);
 
     return mysqli_affected_rows($koneksi);
 }
-//Tambah fasilitas
-    function tambahfasilitas($data)
-    {
-        global $koneksi;
-    
-        $id_fasilitas = htmlspecialchars($data['id_fasilitas']);
-        $foto_fasilitas = upload();
-        $deskripsi = htmlspecialchars($data['deskripsi']);
-    
-        if (!$foto_fasilitas) {
-            return false;
-        }
-    
-        $sql = "INSERT INTO fasilitas VALUES ('$id_fasilitas','$foto_fasilitas','$deskripsi')";
-    
-        mysqli_query($koneksi, $sql);
-    
-     
-       return mysqli_affected_rows($koneksi);
-    
-    }
 
-// Membuat fungsi ubah
-function editfasilitas($data)
-{
+//Tambah fasilitas
+function tambahfasilitas($data){
     global $koneksi;
 
     $id_fasilitas = htmlspecialchars($data['id_fasilitas']);
-    //$foto_gedung = upload();
+    $foto_fasilitas = upload();
     $deskripsi = htmlspecialchars($data['deskripsi']);
-    
-    //$gambar = upload();
 
-    $fotoLama = $data['fotoLama'];
-
-    if ($_FILES['foto_fasilitas']['error'] === 4) {
-        $foto_fasilitas = $fotoLama;
-    } else {
-        $foto_fasilitas = upload();
+    if (!$foto_fasilitas) {
+        return false;
     }
 
-    $sql = "UPDATE fasilitas SET id_fasilitas = '$id_fasilitas', foto_fasilitas = '$foto_fasilitas', deskripsi = '$deskripsi' WHERE id_fasilitas = '$id_fasilitas'";
+    $sql = "INSERT INTO fasilitas VALUES ('$id_fasilitas','$foto_fasilitas','$deskripsi')";
 
     mysqli_query($koneksi, $sql);
-
     return mysqli_affected_rows($koneksi);
+
+}
+
+// Membuat fungsi edit
+function editfasilitas($data){
+global $koneksi;
+
+$id_fasilitas= htmlspecialchars($data['id_fasilitas']);
+$deskripsi = htmlspecialchars($data['deskripsi']);
+
+$fotoLama = $data['fotoLama'];
+
+if ($_FILES['foto_fasilitas']['error'] === 4) {
+    $foto_fasilitas = $fotoLama;
+} else {
+    $foto_fasilitas = upload();
+}
+
+$sql = "UPDATE fasilitas SET  id_fasilitas= '$id_fasilitas', foto_fasilitas = '$foto_fasilitas', deskripsi = '$deskripsi' WHERE id_fasilitas = '$id_fasilitas'";
+
+mysqli_query($koneksi, $sql);
+
+return mysqli_affected_rows($koneksi);
 }
 
 //Tambah paket
-function tambahpaket($data)
-{
+function tambahpaket($data){
     global $koneksi;
 
     $id_paket = htmlspecialchars($data['id_paket']);
@@ -132,26 +100,25 @@ function tambahpaket($data)
     $sql = "INSERT INTO paket VALUES ('$id_paket','$deskripsi')";
 
     mysqli_query($koneksi, $sql);
-
- 
-   return mysqli_affected_rows($koneksi);
+    return mysqli_affected_rows($koneksi);
 
 }
 
-// Membuat fungsi ubah
-function editpaket($data)
-{
+// Membuat fungsi edit
+function editpaket($data){
 global $koneksi;
 
-$id_paket = htmlspecialchars($data['id_paket']);
+$id_paket= htmlspecialchars($data['id_paket']);
 $deskripsi = htmlspecialchars($data['deskripsi']);
 
-$sql = "UPDATE paket SET id_paket = '$id_paket', deskripsi = '$deskripsi' WHERE id_paket = '$id_paket'";
+$sql = "UPDATE paket SET  id_paket= '$id_paket', deskripsi = '$deskripsi' WHERE id_paket = '$id_paket'";
 
 mysqli_query($koneksi, $sql);
 
 return mysqli_affected_rows($koneksi);
 }
+
+// Membuat fungsi upload foto
 function upload()
 {
     // Syarat
@@ -164,6 +131,7 @@ function upload()
     $ukuranFile = $_FILES['foto_fasilitas']['size'];
     $error = $_FILES['foto_fasilitas']['error'];
     $tmpName = $_FILES['foto_fasilitas']['tmp_name'];
+
 
     // Jika tidak mengupload gambar atau tidak memenuhi persyaratan diatas maka akan menampilkan alert dibawah
     if ($error === 4) {
