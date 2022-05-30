@@ -1,6 +1,5 @@
 <?php 
 require 'function.php';
-// $fasilitas = query("SELECT * FROM fasilitas ORDER BY id_fasilitas DESC");
 ?>
 
 <div class="container-fluid">
@@ -19,8 +18,11 @@ require 'function.php';
             <thead>
                 <tr>
                 <th>No</th>
+                <th>ID Fasilitas</th>
                 <th>Fasilitas</th>
-                <th>Foto Fasilitas</th>
+                <th>Jumlah</th>
+                <th>Foto</th>
+                <th>Harga</th>
                 <th>Deskripsi</th>
                 <th>Action</th>
                 </tr>
@@ -37,8 +39,11 @@ require 'function.php';
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_fasilitas']; ?></td>
-                    <td><img style="width:120px;" src="img/<?= $hasil['foto_fasilitas']; ?>"></td>
-                    <td><?= $hasil['deskripsi']; ?></td>
+                    <td><?= $hasil['fasilitas']; ?></td>
+                    <td><?= $hasil['jumlah']; ?></td>
+                    <td><img style="width:120px;" src="img/<?= $hasil['foto']; ?>"></td>
+                    <td><?= $hasil['harga']; ?></td>
+                    <td><?= $hasil['keterangan']; ?></td>
                     <td>               
                         <a href= "admin_index.php?url=admin_edit_fasilitas.php&id_fasilitas=<?= $hasil['id_fasilitas']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
                         <a href="admin_hapus_fasilitas.php?id_fasilitas=<?= $hasil['id_fasilitas'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama_fasilitas']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>

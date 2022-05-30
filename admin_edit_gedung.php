@@ -26,7 +26,7 @@ require 'function.php';
         <h5 class="card-title">Edit Data Gedung</h5>
 
         <form action="" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="fotoLama" value="<?= $hasil['foto_gedung']; ?>">
+        <input type="hidden" name="fotoLama" value="<?= $hasil['foto']; ?>">
             <div class="row mb-3">
                 <label for="id_gedung" class="col-sm-2 col-form-label">ID Gedung</label>
                 <div class="col-sm-10">
@@ -42,15 +42,15 @@ require 'function.php';
             <div class="row mb-3">
                 <label for="foto_gedung" class="col-sm-2 col-form-label">Foto</label>	
                 <div class="col-sm-10">
-                <img src="img/<?= $hasil['foto_gedung']; ?>" width=70px height=75px>
-                <input type="file" name="foto_gedung" class="isian-formulir isian-formulir-border">
+                <img src="img/<?= $hasil['foto']; ?>" width=70px height=75px>
+                <input type="file" name="foto" class="isian-formulir isian-formulir-border">
 				
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                <label for="deskripsi" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="deskripsi" value="<?= $hasil['deskripsi']; ?>" required>
+                    <input type="text" class="form-control" name="keterangan" value="<?= $hasil['keterangan']; ?>" required>
                 </div>
             </div>
             

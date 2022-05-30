@@ -40,13 +40,13 @@ if (isset($_POST['simpan'])) {
             <div class="row mb-3">
                 <label for="foto_gedung" class="col-sm-2 col-form-label">Foto</label>
                 <div class="col-sm-10">
-                    <input type="file" name="foto_gedung" id="foto_gedung" class="isian-formulir isian-formulir-border" required>
+                    <input type="file" name="foto" id="foto" class="isian-formulir isian-formulir-border" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                <label for="deskripsi" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="deskripsi" required>
+                    <input type="text" class="form-control" name="keterangan" required>
                 </div>
             </div>
             

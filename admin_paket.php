@@ -1,6 +1,5 @@
 <?php 
 require 'function.php';
-// $paket = query("SELECT * FROM paket ORDER BY id_paket DESC");
 ?>
 
 <div class="container-fluid">
@@ -19,8 +18,11 @@ require 'function.php';
             <thead>
                 <tr>
                 <th>No</th>
+                <th>ID Paket</th>
                 <th>Paket</th>
-                <th>Deskripsi</th>
+                <th>Fasilitas</th>
+                <th>Harga</th>
+                <th>Keterangan</th>
                 <th>Action</th>
                 </tr>
             </thead>
@@ -36,7 +38,10 @@ require 'function.php';
                 <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_paket']; ?></td>
-                    <td><?= $hasil['deskripsi']; ?></td>
+                    <td><?= $hasil['paket']; ?></td>
+                    <td><?= $hasil['fasilitas']; ?></td>
+                    <td><?= $hasil['harga']; ?></td>
+                    <td><?= $hasil['keterangan']; ?></td>
                     <td>               
                         <a href= "admin_index.php?url=admin_edit_paket.php&id_paket=<?= $hasil['id_paket']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
                         <a href="admin_hapus_paket.php?id_paket=<?= $hasil['id_paket'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama_paket']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
