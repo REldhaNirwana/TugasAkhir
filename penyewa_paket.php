@@ -6,11 +6,10 @@ require 'function.php';
 <div class="card">
     <div class="card-body">
     <div class="card-title">
-    <a href="?url=admin_tambah_paket.php" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i>&nbsp;Tambah Data</a>
     </div>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Paket</h6>
+            <h4 class="m-0 font-weight-bold text-primary">Informasi Paket</h4>
         </div>
         <div class="card-body">
         <div class="table-responsive">
@@ -18,7 +17,6 @@ require 'function.php';
             <thead>
                 <tr>
                 <th>No</th>
-                <th>ID Paket</th>
                 <th>Paket</th>
                 <th>Fasilitas</th>
                 <th>Harga</th>
@@ -37,15 +35,10 @@ require 'function.php';
                        
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $hasil['id_paket']; ?></td>
                     <td><?= $hasil['paket']; ?></td>
                     <td><?= $hasil['fasilitas']; ?></td>
                     <td><?= $hasil['harga']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
-                    <td>               
-                        <a href= "admin_index.php?url=admin_edit_paket.php&id_paket=<?= $hasil['id_paket']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
-                        <a href="admin_hapus_paket.php?id_paket=<?= $hasil['id_paket'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['id_paket']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
-                    </td>
                 </tr>
             <?php 
         } ?>

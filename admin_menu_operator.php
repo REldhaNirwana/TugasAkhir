@@ -58,9 +58,7 @@
                 include"admin_edit_jadwal.php";
                 break; 
 
-
-            
-                default:
+            default:
             echo "<center><h3>Maaf</h3></center>";
             break;
         }

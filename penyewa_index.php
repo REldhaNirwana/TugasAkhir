@@ -38,15 +38,15 @@
                     <span>Cara Pesan</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=gedung">
+                <a class="nav-link" href="?url=penyewa_gedung">
                     <span>Gedung</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=fasilitas">
+                <a class="nav-link" href="?url=penyewa_fasilitas">
                     <span>Fasilitas</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=paket">
+                <a class="nav-link" href="?url=penyewa_paket">
                     <span>Paket</span></a>
             </li>
             <li class="nav-item">
@@ -194,7 +194,7 @@
                     <h1 class="h3 mb-4 text-gray-800"></h1>
                     <!-- menginclude menu_operator, jika diklik tiap menu akan menampilkan halaman menu yang dipilih -->
                     <?php
-                        include 'penyewa/menu_operator.php'
+                        include 'penyewa_menu_operator.php'
                     ?>
                 </div>
             <!-- /.container-fluid -->
