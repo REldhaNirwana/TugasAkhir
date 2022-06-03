@@ -1,6 +1,6 @@
 <?php 
 require 'function.php';
-// $gedung = query("SELECT * FROM gedung ORDER BY id_gedung DESC");
+
 ?>
 
 <div class="container-fluid">
@@ -22,7 +22,7 @@ require 'function.php';
                 <th>ID Gedung</th>
                 <th>Nama Gedung</th>
                 <th>Foto Gedung</th>
-                <th>Deskripsi</th>
+                <th>Keterangan</th>
                 <th>Action</th>
                 </tr>
             </thead>
@@ -39,8 +39,8 @@ require 'function.php';
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_gedung']; ?></td>
                     <td><?= $hasil['nama_gedung']; ?></td>
-                    <td><img style="width:120px;" src="img/<?= $hasil['foto_gedung']; ?>"></td>
-                    <td><?= $hasil['deskripsi']; ?></td>
+                    <td><img style="width:120px;" src="img/<?= $hasil['foto']; ?>"></td>
+                    <td><?= $hasil['keterangan']; ?></td>
                     <td>           
                         <a href= "admin_index.php?url=admin_edit_gedung.php&id_gedung=<?= $hasil['id_gedung']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |
                         <a href="admin_hapus_gedung.php?id_gedung=<?= $hasil['id_gedung'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['nama_gedung']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>

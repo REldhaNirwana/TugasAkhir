@@ -26,25 +26,43 @@ require 'function.php';
         <h5 class="card-title">Edit Data fasilitas</h5>
 
         <form action="" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="fotoLama" value="<?= $hasil['foto_fasilitas']; ?>">
-            <div class="row mb-3">
-                <label for="id_fasilitasg" class="col-sm-2 col-form-label">Fasilitas</label>
+        <input type="hidden" name="fotoLama" value="<?= $hasil['foto']; ?>">
+        <div class="row mb-3">
+                <label for="id_fasilitasg" class="col-sm-2 col-form-label">ID Fasilitas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id ="id_fasilitas" name="id_fasilitas" value="<?php echo $hasil['id_fasilitas'] ?>" required>
                 </div>
             </div>
             <div class="row mb-3">
+                <label for="id_fasilitasg" class="col-sm-2 col-form-label">Fasilitas</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id ="fasilitas" name="fasilitas" value="<?php echo $hasil['fasilitas'] ?>" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="id_fasilitasg" class="col-sm-2 col-form-label">Jumlah</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id ="jumlah" name="jumlah" value="<?php echo $hasil['jumlah'] ?>" required>
+                </div>
+            </div>
+            <div class="row mb-3">
                 <label for="foto_fasilitas" class="col-sm-2 col-form-label">Foto</label>	
                 <div class="col-sm-10">
-                <img src="img/<?= $hasil['foto_fasilitas']; ?>" width=70px height=75px>
-                <input type="file" name="foto_fasilitas" class="isian-formulir isian-formulir-border">
+                <img src="img/<?= $hasil['foto']; ?>" width=70px height=75px>
+                <input type="file" name="foto" class="isian-formulir isian-formulir-border">
 				
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                <label for="id_fasilitasg" class="col-sm-2 col-form-label">Harga</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="deskripsi" value="<?= $hasil['deskripsi']; ?>" required>
+                    <input type="text" class="form-control" id ="harga" name="harga" value="<?php echo $hasil['harga'] ?>" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="deskripsi" class="col-sm-2 col-form-label">Keterangan</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="keterangan" value="<?= $hasil['keterangan']; ?>" required>
                 </div>
             </div>
             

@@ -25,20 +25,39 @@ if (isset($_POST['simpan'])) {
 
         <!-- Horizontal Form -->
         <form action="" method="POST" enctype="multipart/form-data">
-            <div class="row mb-3">
-                <label for="id_paket" class="col-sm-2 col-form-label">Paket</label>
+        <div class="row mb-3">
+                <label for="id_paket" class="col-sm-2 col-form-label">ID Paket</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="id_paket" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                <label for="id_paket" class="col-sm-2 col-form-label">Paket</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="deskripsi" required>
+                    <input type="text" class="form-control" name="paket" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="id_paket" class="col-sm-2 col-form-label">Fasilitas</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="fasilitas" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="id_paket" class="col-sm-2 col-form-label">Harga</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="harga" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="deskripsi" class="col-sm-2 col-form-label">Keterangan</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="keterangan" required>
                 </div>
             </div>
             
             <div class="text-center">
+            <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="simpan">Simpan</button>
                
             </div>

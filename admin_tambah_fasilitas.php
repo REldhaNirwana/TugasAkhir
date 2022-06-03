@@ -26,21 +26,39 @@ if (isset($_POST['simpan'])) {
         <!-- Horizontal Form -->
         <form action="" method="POST" enctype="multipart/form-data">
             <div class="row mb-3">
-                <label for="id_fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
+                <label for="id_fasilitas" class="col-sm-2 col-form-label">ID Fasilitas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="id_fasilitas" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="foto_fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
+                <label for="fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
                 <div class="col-sm-10">
-                    <input type="file" name="foto_fasilitas" id="foto_fasilitas" class="isian-formulir isian-formulir-border" required>
+                    <input type="text" class="form-control" name="fasilitas" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
+                <label for="jumlah" class="col-sm-2 col-form-label">Jumlah</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="deskripsi" required>
+                    <input type="text" class="form-control" name="jumlah" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="foto" class="col-sm-2 col-form-label">Foto</label>
+                <div class="col-sm-10">
+                    <input type="file" name="foto" id="foto" class="isian-formulir isian-formulir-border" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="jumlah" class="col-sm-2 col-form-label">Harga</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="harga" required>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <label for="deskripsi" class="col-sm-2 col-form-label">Keterangan</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="keterangan" required>
                 </div>
             </div>
             
