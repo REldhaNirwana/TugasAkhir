@@ -57,6 +57,11 @@
             case'admin_edit_paket.php' :
                 include"admin_edit_jadwal.php";
                 break; 
+            
+            case'admin_datapenyewa' :
+                include"admin_datapenyewa.php";
+                break; 
+    
 
             default:
             echo "<center><h3>Maaf</h3></center>";

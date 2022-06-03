@@ -32,25 +32,25 @@ if (isset($_POST['simpan'])) {
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="id_paket" class="col-sm-2 col-form-label">Paket</label>
+                <label for="paket" class="col-sm-2 col-form-label">Paket</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="paket" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="id_paket" class="col-sm-2 col-form-label">Fasilitas</label>
+                <label for="fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="fasilitas" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="id_paket" class="col-sm-2 col-form-label">Harga</label>
+                <label for="harga" class="col-sm-2 col-form-label">Harga</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="harga" required>
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Keterangan</label>
+                <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="keterangan" required>
                 </div>

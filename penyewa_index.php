@@ -54,12 +54,20 @@
                     <span>Jadwal</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=sewa">
+                <a class="nav-link" href="?url=penyewa_sewa">
                     <span>Sewa</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=histori">
+                <a class="nav-link" href="?url=penyewa_riwayat">
                     <span>Histori</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?url=penyewa_riwayat">
+                    <span>Kritik dan Saran</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?url=penyewa_riwayat">
+                    <span>Ganti Rugi</span></a>
             </li>
 
             <!-- Divider -->

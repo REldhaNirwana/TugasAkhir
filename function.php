@@ -130,6 +130,29 @@ mysqli_query($koneksi, $sql);
 return mysqli_affected_rows($koneksi);
 }
 
+//Proses Sewa
+function sewagedung($data){
+    global $koneksi;
+
+    $id_penyewa = htmlspecialchars($data['id_penyewa']);
+    $nama_penyewa = htmlspecialchars($data['nama_penyewa']);
+    $alamat_penyewa = htmlspecialchars($data['alamat_penyewa']);
+    $telp_penyewa = htmlspecialchars($data['telp_penyewa']);
+    $id_paket = $data['id_paket'];
+    $tanggalpakai = htmlspecialchars($data['tanggalpakai']);
+    $tanggalpakai = Date('Y-m-d', strtotime($tanggalpakai));
+    $tanggaltempo = htmlspecialchars($data['tanggaltempo']);
+    $tanggaltempo = Date('Y-m-d', strtotime($tanggaltempo));
+    $totalbayar = htmlspecialchars($data['totalbayar']);
+
+
+    $sql = "INSERT INTO sewa VALUES ('$id_penyewa','$nama_penyewa','$alamat_penyewa','$telp_penyewa','$id_paket','$tanggalpakai','$tanggaltempo','$totalbayar')";
+
+    mysqli_query($koneksi, $sql);
+    return mysqli_affected_rows($koneksi);
+
+}
+
 // Membuat fungsi upload foto
 function upload()
 {

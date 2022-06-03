@@ -21,7 +21,6 @@ require 'function.php';
                 <th>Fasilitas</th>
                 <th>Harga</th>
                 <th>Keterangan</th>
-                <th>Action</th>
                 </tr>
             </thead>
             <tbody>
