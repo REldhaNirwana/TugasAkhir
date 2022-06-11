@@ -15,15 +15,21 @@
             case'penyewa_paket' :
                 include"penyewa_paket.php";
                 break;
-            case'penyewa_sewa' :
-                include"penyewa_sewa.php";
+            case'penyewa_sewapaket.php' :
+                include"penyewa_sewapaket.php";
                 break;
-            case'penyewa_riwayat' :
-                include"penyewa_riwayat.php";
+            case'penyewa_sewabiasa.php' :
+                include"penyewa_sewabiasa.php";
                 break;
-            case'detail_sewa.php' :                    
-                    include"detail_sewa.php";
-                    break;
+            case'penyewa_bayarsewapaket.php' :
+                include"penyewa_bayarsewapaket.php";
+                break;
+            case'penyewa_bayarsewabiasa.php' :
+                include"penyewa_bayarsewabiasa.php";
+                break;
+            case'penyewa_jadwal' :                    
+                include"penyewa_jadwal.php";
+                break;
             default:
             echo "<center><h3>Maaf</h3></center>";
             break;

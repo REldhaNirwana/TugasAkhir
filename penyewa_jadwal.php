@@ -5,11 +5,11 @@ require 'function.php';
 <div class="card">
     <div class="card-body">
     <div class="card-title">
-    <a href="?url=admin_tambah_jadwal.php" class="btn btn-primary"><i class="bi bi-person-plus-fill"></i>&nbsp;Tambah Data</a>
+    
     </div>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data Jadwal</h6>
+            <h4 class="m-0 font-weight-bold text-primary">Informasi Jadwal</h4>
         </div>
         <div class="card-body">
         <div class="table-responsive">
@@ -17,10 +17,8 @@ require 'function.php';
             <thead>
                 <tr>
                 <th>No</th>
-                <th>ID Sewa</th>
                 <th>Tanggal Pakai</th>
                 <th>Tanggal Tempo</th>
-                <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,13 +32,9 @@ require 'function.php';
                        
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $hasil['id_jadwal']; ?></td>
                     <td><?= $hasil['tanggalpakai']; ?></td>
                     <td><?= $hasil['tanggaltempo']; ?></td>
                     
-                    <td>               
-                        <a href="admin_hapus_jadwal.php?id_jadwal=<?= $hasil['id_jadwal'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin menghapus data <?= $row['id_pesan']; ?> ?');"><i class="bi bi-trash-fill"></i>&nbsp;Hapus</a>
-                    </td>
                 </tr>
             <?php } ?>
             </tbody>

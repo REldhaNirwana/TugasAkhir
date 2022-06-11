@@ -1,7 +1,6 @@
 <?php 
 require 'function.php';
 ?>
-
 <div class="container-fluid">
 <div class="card">
     <div class="card-body">
@@ -38,7 +37,7 @@ require 'function.php';
                     <td><?= $hasil['fasilitas']; ?></td>
                     <td><?= $hasil['jumlah']; ?></td>
                     <td><img style="width:120px;" src="img/<?= $hasil['foto']; ?>"></td>
-                    <td><?= $hasil['harga']; ?></td>
+                    <td><?= $hasil['harga_fsl']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
                 </tr>
             <?php 

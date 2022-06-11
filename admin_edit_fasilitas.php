@@ -56,7 +56,7 @@ require 'function.php';
             <div class="row mb-3">
                 <label for="id_fasilitasg" class="col-sm-2 col-form-label">Harga</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id ="harga" name="harga" value="<?php echo $hasil['harga'] ?>" required>
+                    <input type="text" class="form-control" id ="harga" name="harga_fsl" value="<?php echo $hasil['harga_fsl'] ?>" required>
                 </div>
             </div>
             <div class="row mb-3">

@@ -31,64 +31,18 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="?url=dashboard">
-                    <span>Dashboard</span></a>
+                <a class="nav-link" href="?url=staff_datapenyewa">
+                    <span>Data Penyewa</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=carapesan">
-                    <span>Cara Pesan</span></a>
+                <a class="nav-link" href="?url=staff_cekfasilitas">
+                    <span>Cek Kondisi Fasilitas </span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_gedung">
-                    <span>Gedung</span></a>
+                <a class="nav-link" href="?url=staff_informasifasilitas">
+                    <span>Informasi Fasilitas Rusak</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_fasilitas">
-                    <span>Fasilitas</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_paket">
-                    <span>Paket</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_jadwal">
-                    <span>Jadwal</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <span>Sewa</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?url=penyewa_sewapaket.php">Paket</a>
-                        <a class="collapse-item" href="?url=penyewa_sewabiasa.php">Biasa</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <span>Konfirmasi Pembayaran</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?url=penyewa_bayarsewapaket.php">Paket</a>
-                        <a class="collapse-item" href="?url=penyewa_bayarsewabiasa.php">Biasa</a>
-                    </div>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_riwayat">
-                    <span>Kritik dan Saran</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_riwayat">
-                    <span>Ganti Rugi</span></a>
-            </li>
-
-            <!-- Divider -->
+                       <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Sidebar Toggler (Sidebar) -->

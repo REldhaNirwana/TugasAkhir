@@ -44,6 +44,12 @@ if (isset($_POST['simpan'])) {
                 </div>
             </div>
             <div class="row mb-3">
+                <label for="nama_gedung" class="col-sm-2 col-form-label">Harga</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="harga_gdg" required>
+                </div>
+            </div>
+            <div class="row mb-3">
                 <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="keterangan" required>

@@ -19,6 +19,7 @@ require 'function.php';
                 <th>No</th>
                 <th>Nama Gedung</th>
                 <th>Foto Gedung</th>
+                <th>Harga</th>
                 <th>Keterangan</th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@ require 'function.php';
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['nama_gedung']; ?></td>
                     <td><img style="width:120px;" src="img/<?= $hasil['foto']; ?>"></td>
+                    <td><?= $hasil['harga_gdg']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
                 </tr>
             <?php } ?>

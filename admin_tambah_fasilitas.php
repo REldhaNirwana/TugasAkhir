@@ -52,7 +52,7 @@ if (isset($_POST['simpan'])) {
             <div class="row mb-3">
                 <label for="jumlah" class="col-sm-2 col-form-label">Harga</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="harga" required>
+                    <input type="text" class="form-control" name="harga_fsl" required>
                 </div>
             </div>
             <div class="row mb-3">
