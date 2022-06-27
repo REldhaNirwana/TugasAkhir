@@ -42,7 +42,7 @@ require 'function.php';
                     <td><?= $hasil['fasilitas']; ?></td>
                     <td><?= $hasil['jumlah']; ?></td>
                     <td><img style="width:120px;" src="img/<?= $hasil['foto']; ?>"></td>
-                    <td><?= $hasil['harga_fsl']; ?></td>
+                    <td>Rp <?= $hasil['harga_fsl']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
                     <td>               
                         <a href= "admin_index.php?url=admin_edit_fasilitas.php&id_fasilitas=<?= $hasil['id_fasilitas']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |

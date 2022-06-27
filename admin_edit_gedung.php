@@ -30,7 +30,7 @@ require 'function.php';
             <div class="row mb-3">
                 <label for="id_gedung" class="col-sm-2 col-form-label">ID Gedung</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id ="id_gedung" name="id_gedung" value="<?php echo $hasil['id_gedung'] ?>" required>
+                    <input type="text" class="form-control" id ="id_gedung" name="id_gedung" value="<?php echo $hasil['id_gedung'] ?>" readonly required>
                 </div>
             </div>
             <div class="row mb-3">
@@ -48,7 +48,7 @@ require 'function.php';
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="deskripsi" class="col-sm-2 col-form-label">Harga</label>
+                <label for="deskripsi" class="col-sm-2 col-form-label">Harga (Rp)</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="harga_gdg" value="<?= $hasil['harga_gdg']; ?>" required>
                 </div>

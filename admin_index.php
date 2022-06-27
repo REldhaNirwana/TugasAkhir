@@ -1,3 +1,21 @@
+<?php
+// Sesi dimulai
+session_start();
+ 
+// Cek sesi, kalau gk ada kembali ke login
+if(!isset($_SESSION["loggedin_admin"]) || $_SESSION["loggedin_admin"] !== true){
+    header("location: login_admin.php?alert=logindulu");
+    exit;
+}
+if(isset($_SESSION["loggedin_penyewa"]) == true){
+    header("location: logout_admin.php");
+    exit;
+}
+if(isset($_SESSION["loggedin_review"]) == true){
+    header("location: logout_admin.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,8 +67,8 @@
                 <a class="nav-link" href="?url=admin_paket">
                     <span>Manajemen Paket</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=admin_jadwal">
+			<li class="nav-item">
+            <a class="nav-link" href="?url=admin_jadwal">
                     <span>Manajemen Jadwal</span></a>
             </li>
             <li class="nav-item">
@@ -62,16 +80,12 @@
                     <span>Manajemen Data Penyewaan</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=laporan_keuangan">
+                <a class="nav-link" href="?url=admin_laporan_keuangan">
                     <span>Laporan Keuangan</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?url=admin_ganti_rugi">
                     <span>Info Ganti Rugi</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=admin_kritik_saran">
-                    <span>Info Kritik dan Saran</span></a>
             </li>
 
             <!-- Divider -->
@@ -91,51 +105,32 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
-                    <form class="form-inline">
+                    <!-- <form class="form-inline"> -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                         </button>
-                    </form>
+                    <!-- </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Messages -->
                         
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
-                                <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter"></span>
-                            </a>
-                            <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
-                                <h6 class="dropdown-header">
-                                    Message Center
-                                </h6>
-                               
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                            </div>
-                        </li>
-
-                        <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 big"><?=$_SESSION['username'];?></span>
+                                <!-- <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg"> -->
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -157,7 +152,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2020</span>
+                        <span>Copyright © Gedung Serbaguna Bahari Sejahtera</span>
                     </div>
                 </div>
             </footer>
@@ -185,10 +180,10 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                 <div class="modal-body">Apakah anda yakin ingin logout?</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <a class="btn btn-primary" href="logout_admin.php">Logout</a>
                 </div>
             </div>
         </div>

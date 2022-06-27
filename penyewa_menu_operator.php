@@ -30,6 +30,16 @@
             case'penyewa_jadwal' :                    
                 include"penyewa_jadwal.php";
                 break;
+				
+			case'penyewa_jadwal_paket' :                    
+                include"penyewa_jadwal_paket.php";
+                break;
+			case'penyewa_ganti_rugi' :                    
+                include"penyewa_ganti_rugi.php";
+                break;
+			case'carapesan' :                    
+                include"penyewa_cara_pesan.php";
+                break;
             default:
             echo "<center><h3>Maaf</h3></center>";
             break;

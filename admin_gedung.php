@@ -41,7 +41,7 @@ require 'function.php';
                     <td><?= $hasil['id_gedung']; ?></td>
                     <td><?= $hasil['nama_gedung']; ?></td>
                     <td><img style="width:120px;" src="img/<?= $hasil['foto']; ?>"></td>
-                    <td><?= $hasil['harga_gdg']; ?></td>
+                    <td>Rp <?= $hasil['harga_gdg']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
                     <td>           
                         <a href= "admin_index.php?url=admin_edit_gedung.php&id_gedung=<?= $hasil['id_gedung']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |

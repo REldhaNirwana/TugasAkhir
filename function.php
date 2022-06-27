@@ -100,14 +100,13 @@ return mysqli_affected_rows($koneksi);
 //Tambah paket
 function tambahpaket($data){
     global $koneksi;
-
+	
     $id_paket = htmlspecialchars($data['id_paket']);
     $paket = htmlspecialchars($data['paket']);
-    $fasilitas = htmlspecialchars($data['fasilitas']);
     $harga = htmlspecialchars($data['harga']);
     $keterangan = htmlspecialchars($data['keterangan']);
 
-    $sql = "INSERT INTO paket VALUES ('$id_paket','$paket','$fasilitas','$harga','$keterangan')";
+    $sql = "INSERT INTO paket VALUES ('$id_paket','$paket','$harga','$keterangan')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
@@ -135,14 +134,14 @@ function tambahjadwal($data){
     global $koneksi;
 
     $id_jadwal = htmlspecialchars($data['id_jadwal']);
-    
+    $paket = htmlspecialchars($data['paket']);
     $tanggalpakai = htmlspecialchars($data['tanggalpakai']);
     $tanggalpakai = Date('Y-m-d', strtotime($tanggalpakai));
     $tanggaltempo = htmlspecialchars($data['tanggaltempo']);
     $tanggaltempo = Date('Y-m-d', strtotime($tanggaltempo));
     
 
-    $sql = "INSERT INTO jadwal_sewa VALUES ('$id_jadwal','$tanggalpakai','$tanggaltempo')";
+    $sql = "INSERT INTO jadwal_sewa VALUES ('$id_jadwal','$tanggalpakai','$tanggaltempo','$paket')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
@@ -150,12 +149,22 @@ function tambahjadwal($data){
 }
 
 
-//Proses Sewa Paket
-function sewapaket($data){
+//Proses Sewa Biasa
+function sewa($data){
     global $koneksi;
-
+	//Fungsi menambahkan multiple fasilitas dalam satu kolom
+	$checkbox1=$_POST['fasilitas'];  
+	$chk="";  
+	foreach($checkbox1 as $chk1)  
+    {  
+      $chk .= $chk1."-";  
+    }  
+	
+	$a = array($chk);
+	
     $id_sewa = htmlspecialchars($data['id_sewa']);
     $nama_penyewa = htmlspecialchars($data['nama_penyewa']);
+	$username = htmlspecialchars($data['username']);
     $alamat_penyewa = htmlspecialchars($data['alamat_penyewa']);
     $telp_penyewa = htmlspecialchars($data['telp_penyewa']);
     $id_paket = $data['id_paket'];
@@ -164,66 +173,106 @@ function sewapaket($data){
     $tanggaltempo = htmlspecialchars($data['tanggaltempo']);
     $tanggaltempo = Date('Y-m-d', strtotime($tanggaltempo));
     $lamasewa = htmlspecialchars($data['lamasewa']);
+	$id_gedung = htmlspecialchars($data['id_gedung']);
+    
 
-    $sql = "INSERT INTO sewapaket VALUES ('$id_sewa','$nama_penyewa','$alamat_penyewa','$telp_penyewa','$id_paket','$tanggalpakai','$tanggaltempo','$lamasewa')";
+    $sql = "INSERT INTO sewa VALUES ('$id_sewa','$nama_penyewa','$username', '$alamat_penyewa','$telp_penyewa','$id_paket','$tanggalpakai','$tanggaltempo','$lamasewa','$id_gedung','$chk')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
 
 }
-//Proses Sewa Paket
-function sewabiasa($data){
-    global $koneksi;
 
+//Proses Sewa Paket
+function sewapaket($data){
+    global $koneksi;
+	
     $id_sewa = htmlspecialchars($data['id_sewa']);
     $nama_penyewa = htmlspecialchars($data['nama_penyewa']);
+	$username = htmlspecialchars($data['username']);
     $alamat_penyewa = htmlspecialchars($data['alamat_penyewa']);
     $telp_penyewa = htmlspecialchars($data['telp_penyewa']);
-    $id_gedung = $data['id_gedung'];
-    $id_fasilitas = $data['id_fasilitas'];
+    $id_paket = $data['id_paket'];
     $tanggalpakai = htmlspecialchars($data['tanggalpakai']);
     $tanggalpakai = Date('Y-m-d', strtotime($tanggalpakai));
     $tanggaltempo = htmlspecialchars($data['tanggaltempo']);
     $tanggaltempo = Date('Y-m-d', strtotime($tanggaltempo));
     $lamasewa = htmlspecialchars($data['lamasewa']);
-    
-        
-        $sql = "INSERT INTO sewabiasa VALUES ('$id_sewa','$nama_penyewa','$alamat_penyewa','$telp_penyewa','$id_gedung','$id_fasilitas','$tanggalpakai','$tanggaltempo','$lamasewa')";
+	$id_gedung = htmlspecialchars($data['id_gedung']);
+	$id_fasilitas = htmlspecialchars($data['id_fasilitas']);
 
-        mysqli_query($koneksi, $sql);
-        return mysqli_affected_rows($koneksi);
-    
-    
-}
-
-//Proses Bayar Sewa Biasa
-function bayarsewabiasa($data){
-    global $koneksi;
-    $id_bayar = "SELECT max(id_bayarr)FROM transaksi_sewabiasa";
-    $id_sewabiasa = $data['id_sewabiasa'];
-    $norek = htmlspecialchars($data['norek']);
-    $foto = upload();
-
-    $sql = "INSERT INTO transaksi_sewabiasa VALUES ('$id_bayar','$id_sewabiasa','$norek','$foto')";
+    $sql = "INSERT INTO sewa VALUES ('$id_sewa','$nama_penyewa','$username', '$alamat_penyewa','$telp_penyewa','$id_paket','$tanggalpakai','$tanggaltempo','$lamasewa','$id_gedung','$id_fasilitas')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
 
 }
 
-//Proses Bayar Sewa Paket
-function bayarsewapaket($data){
+function reviewsend($data){
     global $koneksi;
-    $id_bayar = "SELECT max(id_bayar)FROM transaksi_sewapaket";
-    $id_sewapaket = $data['id_sewapaket'];
-    $norek = htmlspecialchars($data['norek']);
-    $foto = upload();
-
-    $sql = "INSERT INTO transaksi_sewapaket VALUES ('$id_bayar','$id_sewapaket','$norek','$foto')";
+	
+    $id_sewa = htmlspecialchars($data['id_sewa']);
+    $reviewdata = htmlspecialchars($data['reviewdata']);
+	$username = htmlspecialchars($data['username']);
+	$denda = htmlspecialchars($data['denda']);
+	$status = htmlspecialchars($data['status']);
+	
+    $sql = "INSERT INTO review VALUES ('$id_sewa','$reviewdata','$username','$denda','$status')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
 
+}
+
+//Proses Bayar Sewa 
+function bayarsewa($data){
+    global $koneksi;
+	
+    $id_bayar = $data['id_bayar'];
+    $id_sewa = $data['id_sewa'];
+    $norek = htmlspecialchars($data['norek']);
+    $foto = upload();
+	$username = htmlspecialchars($data['username']);
+	$status = htmlspecialchars($data['status']);
+	$totalbayar = htmlspecialchars($data['totalbayar']);
+	$nama_penyewa = htmlspecialchars($data['nama_penyewa']);
+	$tanggalpakai = htmlspecialchars($data['tanggalpakai']);
+
+    $sql = "INSERT INTO transaksi_sewa VALUES ('$id_bayar','$id_sewa','$norek','$foto','$username','$status','$totalbayar','$nama_penyewa','$tanggalpakai')";
+
+    mysqli_query($koneksi, $sql);
+    return mysqli_affected_rows($koneksi);
+
+}
+
+function updatestatus($data){
+    global $koneksi;
+
+    $status = htmlspecialchars($data['status']);
+    $id_bayar = htmlspecialchars($data['id_bayar']);
+
+    $sql = "UPDATE transaksi_sewa SET  status = '$status' WHERE id_bayar = '$id_bayar'";
+
+    mysqli_query($koneksi, $sql);
+
+    return mysqli_affected_rows($koneksi);
+}
+
+function reviewupdate($data){
+    global $koneksi;
+
+    $id_sewa = htmlspecialchars($data['id_sewa']);
+    $denda = $data['denda'];
+	$reviewdata= htmlspecialchars($data['reviewdata']);
+	$username= htmlspecialchars($data['username']);
+	$status= htmlspecialchars($data['status']);
+	
+
+    $sql = "UPDATE review SET denda= '$denda',reviewdata= '$reviewdata', status='$status' WHERE id_sewa = '$id_sewa'";
+
+    mysqli_query($koneksi, $sql);
+
+    return mysqli_affected_rows($koneksi);
 }
 // Membuat fungsi upload foto
 function upload()

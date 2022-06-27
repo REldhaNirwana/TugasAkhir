@@ -20,7 +20,6 @@ require 'function.php';
                 <th>No</th>
                 <th>ID Paket</th>
                 <th>Paket</th>
-                <th>Fasilitas</th>
                 <th>Harga</th>
                 <th>Keterangan</th>
                 <th>Action</th>
@@ -39,8 +38,7 @@ require 'function.php';
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_paket']; ?></td>
                     <td><?= $hasil['paket']; ?></td>
-                    <td><?= $hasil['fasilitas']; ?></td>
-                    <td><?= $hasil['harga']; ?></td>
+                    <td>Rp <?= $hasil['harga']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
                     <td>               
                         <a href= "admin_index.php?url=admin_edit_paket.php&id_paket=<?= $hasil['id_paket']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-pencil-square"></i>&nbsp;Edit</a> |

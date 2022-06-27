@@ -18,7 +18,6 @@ require 'function.php';
                 <tr>
                 <th>No</th>
                 <th>Paket</th>
-                <th>Fasilitas</th>
                 <th>Harga</th>
                 <th>Keterangan</th>
                 </tr>
@@ -34,8 +33,7 @@ require 'function.php';
                        
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $hasil['paket']; ?></td>
-                    <td><?= $hasil['fasilitas']; ?></td>
+                    <td><?= $hasil['id_paket']; ?></td>
                     <td><?= $hasil['harga']; ?></td>
                     <td><?= $hasil['keterangan']; ?></td>
                 </tr>

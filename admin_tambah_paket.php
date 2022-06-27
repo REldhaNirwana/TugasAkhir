@@ -26,9 +26,23 @@ if (isset($_POST['simpan'])) {
         <!-- Horizontal Form -->
         <form action="" method="POST" enctype="multipart/form-data">
         <div class="row mb-3">
-                <label for="id_paket" class="col-sm-2 col-form-label">ID Paket</label>
+            <label for="id_paket" class="col-sm-2 col-form-label">ID Paket</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id_paket" required>
+				<!-- AutoGenerate ID -->
+                    <?php
+					
+					$query = mysqli_query($koneksi, "SELECT max(id_paket) as kodeTerbesar FROM paket");
+					$data = mysqli_fetch_array($query);
+					$idPak = $data['kodeTerbesar'];
+
+					$urutan = (int) substr($idPak, 3, 3);
+ 
+					$urutan++;
+
+					$huruf = "P";
+					$idPak = $huruf . sprintf("%03s", $urutan);
+				?>
+				<input type="text" class="form-control" name="id_paket" required="required" value="<?php echo $idPak ?>" readonly>
                 </div>
             </div>
             <div class="row mb-3">
@@ -37,14 +51,9 @@ if (isset($_POST['simpan'])) {
                     <input type="text" class="form-control" name="paket" required>
                 </div>
             </div>
+            
             <div class="row mb-3">
-                <label for="fasilitas" class="col-sm-2 col-form-label">Fasilitas</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="fasilitas" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="harga" class="col-sm-2 col-form-label">Harga</label>
+                <label for="harga" class="col-sm-2 col-form-label">Harga (Rp)</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="harga" required>
                 </div>

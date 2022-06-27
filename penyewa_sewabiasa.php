@@ -5,7 +5,7 @@ require 'function.php';
 
 //Jika fungsi tambah lebih dari 0/data tersimpan, maka munculkan alert dibawah
 if (isset($_POST['sewa'])) {
-    if (sewabiasa($_POST) > 0) {
+    if (sewa($_POST) > 0) {
          echo "<script>
                 alert('Silahkan Melakukan Transaksi di menu Transaksi!');
                 document.location.href ='?url=penyewa_sewabiasa.php';
@@ -18,17 +18,37 @@ if (isset($_POST['sewa'])) {
             </script>";
     }
 }
-
 ?>
 <div class="card">
     <div class="card-body">
         <h5 class="card-title">Form Sewa Biasa Gedung</h5>
+
         <!-- Horizontal Form -->
         <form action="" method="POST" enctype="multipart/form-data">
+		<!-- Record username login -->
+		<input type="hidden" class="form-control" name="username" value="<?=$_SESSION['username'];?>" required>
+		<!-- Karena ini biasa, id paket di 0 kan -->
+		<input type="hidden" class="form-control" name="id_paket" value="0" required>
             <div class="row mb-3">
                 <label for="id_penyewa" class="col-sm-2 col-form-label">ID Sewa</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id_sewa" placeholder="Masukkan NIK Anda" required>
+				
+				<!-- AutoGenerate ID -->
+				<?php
+					
+					$query = mysqli_query($koneksi, "SELECT max(id_sewa) as kodeTerbesar FROM sewa");
+					$data = mysqli_fetch_array($query);
+					$idSewa = $data['kodeTerbesar'];
+
+					$urutan = (int) substr($idSewa, 3, 3);
+ 
+					$urutan++;
+
+					$huruf = "REG";
+					$idSewa = $huruf . sprintf("%03s", $urutan);
+				?>
+					<input type="text" class="form-control" name="id_sewa" required="required" value="<?php echo $idSewa ?>" readonly>
+					
                 </div>
             </div>
             <div class="row mb-3">
@@ -36,6 +56,45 @@ if (isset($_POST['sewa'])) {
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="nama_penyewa" placeholder="Masukkan Nama Sesuai KTP" required>
                 </div>
+            </div>
+			<div class="row mb-3">
+                <label for="telp_penyewa" class="col-sm-2 col-form-label">Gedung</label>
+                <div class="col-sm-10">
+					<select name="id_gedung" class="form-control" required> 
+						<option value="0">Pilih salah satu</option>
+						<?php
+						$sql="SELECT * FROM gedung";
+						$result = mysqli_query($koneksi,$sql);
+						while($row = mysqli_fetch_array($result)) 
+						{
+						?>
+							<option value = "<?php echo($row['id_gedung'])?>" >
+							<?php echo($row['nama_gedung']);
+							?>
+							</option>
+						<?php 
+						} 
+						?>
+					</select>
+                </div>
+            </div>
+			<div class="row mb-3">
+                <label for="telp_penyewa" class="col-sm-2 col-form-label">Fasilitas</label>
+				<div class="col-sm-10">
+                <?php
+						$sql="SELECT * FROM fasilitas";
+						$result = mysqli_query($koneksi,$sql);
+						while($row = mysqli_fetch_array($result)) 
+						{
+						?>
+							<input name="fasilitas[]" type="checkbox" value = "<?php echo($row['harga_fsl'])?>:<?php echo($row['fasilitas'])?>" >
+							<?php echo($row['fasilitas']);
+							?>
+							
+						<?php 
+						} 
+						?>
+					</div>
             </div>
             <div class="row mb-3">
                 <label for="alamat_penyewa" class="col-sm-2 col-form-label">Alamat</label>
@@ -49,27 +108,7 @@ if (isset($_POST['sewa'])) {
                     <input type="text" class="form-control" name="telp_penyewa" placeholder="Masukkan No.Telp Anda" required>
                 </div>
             </div>
-            <div class="row mb-3">
-                <label for="telp_penyewa" class="col-sm-2 col-form-label">ID Gedung</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id_gedung" placeholder="Masukkan ID Gedung" required>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="telp_penyewa" class="col-sm-2 col-form-label">Fasilitas</label>
-                <div class="col-sm-10">
-                <tr><td><input type="checkbox" name="id_fasilitas" value="1"></td>
-                    <td>Kursi</td>
-                </tr><br>
-                <tr><td><input type="checkbox" name="id_fasilitas" value="2"></td>
-                    <td>Sound System</td>
-                </tr>
-                </tr>
-                
-               
-                </div>
-            </div>
-                
+            
             <div class="row mb-3">
                 <label for="id_paket" class="col-sm-2 col-form-label">Tanggal Pakai</label>
                 <div class="col-sm-10">
@@ -88,10 +127,10 @@ if (isset($_POST['sewa'])) {
                     <input type="text" class="form-control" name="lamasewa" placeholder="Lama sewa harian" required>
                 </div>
             </div>
-
             <div class="text-center">
             <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="sewa">Sewa</button>
+                
                
             </div>
         </form>
@@ -108,7 +147,7 @@ if (isset($_POST['sewa'])) {
     </div>
       <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h4 class="m-0 font-weight-bold text-primary">Sewa Biasa</h4>
+            <h4 class="m-0 font-weight-bold text-primary">Sewa Biasa Saya</h4>
         </div>
         <div class="card-body">
         <div class="table-responsive">
@@ -118,38 +157,44 @@ if (isset($_POST['sewa'])) {
                 <th>No</th>
                 <th>ID Sewa</th>
                 <th>Penyewa</th>
-                <th>ID Gedung</th>
-                <th>ID Fasilitas</th>
+               
                 <th>Tanggal Pakai</th>
                 <th>Tanggal Tempo</th>
                 <th>Lama Pakai</th>
-      
+                <th>Total Bayar</th>
                 <th>Action</th>
                 </tr>
             </thead>
             <tbody>
+			
+			<!--  WHERE username='$_SESSION[username]'  -- perintah menampilkan data berdasarkan user login | &&id paket=0 yang biasa--> 
+			<!-- fungsi ecplode untuk memecah data array fasilitas , setelah itu array sum dan ditambahkan ke harga total bayar-->
             <?php 
             $no = 1;
             $totalbayar = 0;
-            
-            $tampil = mysqli_query($koneksi, "SELECT * FROM sewabiasa INNER JOIN gedung on sewabiasa.id_gedung = gedung.id_gedung INNER JOIN fasilitas on sewabiasa.id_fasilitas = fasilitas.id_fasilitas
-             ORDER BY id_sewabiasa DESC");
 
-            while($hasil = mysqli_fetch_array($tampil)){
-                $totalbayar =($hasil['harga_gdg'] + $hasil['harga_fsl'])* $hasil['lamasewa'];
+            $tampil = mysqli_query($koneksi, "SELECT * FROM sewa INNER JOIN gedung on sewa.id_gedung = gedung.id_gedung WHERE username='$_SESSION[username]' && id_paket=0 ORDER BY id_sewa DESC");
+
+            while($hasil = $tampil->fetch_assoc()){
+				$res = explode(',',$hasil['id_fasilitas']);
+				$result = array_sum($res);
+				$totalbayar =($hasil['harga_gdg'] * $hasil['lamasewa'])+$result;
             ?>
                        
                 <tr>
                     <td><?= $no++; ?></td>
-                    <td><?= $hasil['id_sewabiasa']; ?></td>
+                    <td><?= $hasil['id_sewa']; ?></td>
                     <td><?= $hasil['nama_penyewa']; ?></td>
-                    <td><?= $hasil['id_gedung']; ?></td>
-                    <td><?= $hasil['id_fasilitas']; ?></td>
+                    
                     <td><?= $hasil['tanggalpakai']; ?></td>
                     <td><?= $hasil['tanggaltempo']; ?></td>
                     <td><?= $hasil['lamasewa']; ?></td>
+                    <td><?= $totalbayar ?></td>
                     <td>
-                        <a href="penyewa_hapus_sewa.php?id_sewabiasa=<?= $hasil['id_sewabiasa'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin membatalkan penyewaan ?');"><i class="bi bi-trash-fill"></i>&nbsp;Batal Sewa</a>
+					
+				
+                        <a href="penyewa_hapus_sewa.php?id_sewa=<?= $hasil['id_sewa'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin membatalkan penyewaan ?');"><i class="bi bi-trash-fill"></i>&nbsp;Batal Sewa</a>
+                        <a href="penyewa_index.php?url=penyewa_bayarsewapaket.php&id_sewa=<?= $hasil['id_sewa'];?>&totalbayar=<?= $totalbayar ?>&nama_penyewa=<?= $hasil['nama_penyewa']; ?>&tanggalpakai=<?= $hasil['tanggalpakai']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-trash-fill"></i>&nbsp;Bayar</a>
                     </td>
                 </tr>
             <?php } ?>
@@ -161,6 +206,5 @@ if (isset($_POST['sewa'])) {
         </div>
         </div>
         </div>
-
 </div>
 <!-- /.container-fluid -->

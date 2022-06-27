@@ -23,11 +23,25 @@ if (isset($_POST['tambah'])) {
         <h5 class="card-title">Jadwal</h5>
         <!-- Horizontal Form -->
         <form action="" method="POST" enctype="multipart/form-data">
-        <div class="row mb-3">
+			<div class="row mb-3">
                 <label for="nama_penyewa" class="col-sm-2 col-form-label">ID Jadwal</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id_jadwal" placeholder="Masukkan Nama Sesuai KTP" required>
-                </div>
+				<div class="col-sm-10">
+				<!-- AutoGenerate ID -->
+				<?php
+					
+					$query = mysqli_query($koneksi, "SELECT max(id_jadwal) as kodeTerbesar FROM jadwal_sewa");
+					$data = mysqli_fetch_array($query);
+					$idJad = $data['kodeTerbesar'];
+
+					$urutan = (int) substr($idJad, 3, 3);
+ 
+					$urutan++;
+
+					$huruf = "SCH";
+					$idJad = $huruf . sprintf("%03s", $urutan);
+				?>
+                <input type="text" class="form-control" name="id_jadwal" required="required" value="<?php echo $idJad ?>" readonly>
+				</div>
             </div>
             <div class="row mb-3">
                 <label for="alamat_penyewa" class="col-sm-2 col-form-label">Tanggal Pakai</label>
@@ -41,7 +55,17 @@ if (isset($_POST['tambah'])) {
                     <input type="date" class="form-control" name="tanggaltempo" placeholder="Masukkan Nama Sesuai KTP" required>
                 </div>
             </div> 
-            
+			<!-- Masuk data base, jika value 1 maka paket -->
+            <div class="row mb-3">
+                <label for="telp_penyewa" class="col-sm-2 col-form-label">Jenis Jadwal</label>
+                <div class="col-sm-10">
+					<select name="paket" class="form-control" required> 
+						<option value="">Pilih salah satu</option>
+						<option value="0">Biasa</option>
+						<option value="1">Paket</option>
+					</select>
+                </div>
+            </div>
             <div class="text-center">
             <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="tambah">Tambah</button>
@@ -53,4 +77,3 @@ if (isset($_POST['tambah'])) {
             </table>
         </div>
     </div>
-</div>

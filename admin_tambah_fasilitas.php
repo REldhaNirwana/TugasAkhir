@@ -28,7 +28,21 @@ if (isset($_POST['simpan'])) {
             <div class="row mb-3">
                 <label for="id_fasilitas" class="col-sm-2 col-form-label">ID Fasilitas</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="id_fasilitas" required>
+				<!-- AutoGenerate ID -->
+				<?php
+					
+					$query = mysqli_query($koneksi, "SELECT max(id_fasilitas) as kodeTerbesar FROM fasilitas");
+					$data = mysqli_fetch_array($query);
+					$idSewa = $data['kodeTerbesar'];
+
+					$urutan = (int) substr($idSewa, 3, 3);
+ 
+					$urutan++;
+
+					$huruf = "F";
+					$idSewa = $huruf . sprintf("%03s", $urutan);
+				?>
+					<input type="text" class="form-control" name="id_fasilitas" required="required" value="<?php echo $idSewa ?>" readonly>
                 </div>
             </div>
             <div class="row mb-3">
@@ -50,7 +64,7 @@ if (isset($_POST['simpan'])) {
                 </div>
             </div>
             <div class="row mb-3">
-                <label for="jumlah" class="col-sm-2 col-form-label">Harga</label>
+                <label for="jumlah" class="col-sm-2 col-form-label">Harga (Rp)</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" name="harga_fsl" required>
                 </div>

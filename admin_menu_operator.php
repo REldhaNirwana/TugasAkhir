@@ -31,7 +31,9 @@
             case'admin_edit_fasilitas.php' :
                 include"admin_edit_fasilitas.php";
                 break; 
-            
+            case'admin_ganti_rugi' :
+                include"admin_ganti_rugi.php";
+                break;
             case'admin_paket' :
                 include"admin_paket.php";
                 break;
@@ -57,14 +59,30 @@
             case'admin_edit_paket.php' :
                 include"admin_edit_jadwal.php";
                 break; 
+			case'admin_ubah_denda.php' :
+                include"admin_ubah_denda.php";
+                break; 
             
             case'admin_datapenyewa' :
                 include"admin_datapenyewa.php";
                 break; 
+				
+			case'admin_transaksi' :
+                include"admin_transaksi.php";
+                break; 
+				
+					
+			case'admin_ubahstatus.php' :
+                include"admin_ubahstatus.php";
+                break; 
+				
+			case'admin_laporan_keuangan' :
+                include"admin_laporan_keuangan.php";
+                break; 
     
 
             default:
-            echo "<center><h3>Maaf</h3></center>";
+            echo "<center><h3>Maaf, anda salah alamat</h3></center>";
             break;
         }
     }

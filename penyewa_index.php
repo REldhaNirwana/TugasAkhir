@@ -1,4 +1,21 @@
-
+<?php
+// Sesi dimulai
+session_start();
+ 
+// Cek sesi, kalau gk ada kembali ke login
+if(!isset($_SESSION["loggedin_penyewa"]) || $_SESSION["loggedin_penyewa"] !== true){
+    header("location: login.php?alert=logindulu");
+    exit;
+}
+if(isset($_SESSION["loggedin_admin"]) == true){
+    header("location: logout.php");
+    exit;
+}
+if(isset($_SESSION["loggedin_review"]) == true){
+    header("location: logout.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +48,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="?url=dashboard">
+                <a class="nav-link" href="?url=penyewa_dashboard">
                     <span>Dashboard</span></a>
             </li>
             <li class="nav-item">
@@ -51,8 +68,16 @@
                     <span>Paket</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_jadwal">
-                    <span>Jadwal</span></a>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
+                    aria-expanded="true" aria-controls="collapse">
+                    <span>Jadwal</span>
+                </a>
+                <div id="collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="?url=penyewa_jadwal_paket">Paket</a>
+                        <a class="collapse-item" href="?url=penyewa_jadwal">Biasa</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -66,28 +91,14 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <span>Konfirmasi Pembayaran</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="?url=penyewa_bayarsewapaket.php">Paket</a>
-                        <a class="collapse-item" href="?url=penyewa_bayarsewabiasa.php">Biasa</a>
-                    </div>
-                </div>
+			<li class="nav-item">
+                <a class="nav-link" href="?url=penyewa_bayarsewapaket.php&id_sewa=SILAHKAN KE MENU SEWA&totalbayar=0">
+                    <span>Riwayat Pembayaran</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_riwayat">
-                    <span>Kritik dan Saran</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_riwayat">
+                <a class="nav-link" href="?url=penyewa_ganti_rugi">
                     <span>Ganti Rugi</span></a>
             </li>
-
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -135,76 +146,22 @@
                             </div>
                         </li>
 
-                        <!-- Nav Item - Alerts -->
-                        <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
-                                <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter"></span>
-                            </a>
-                            <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
-                                <h6 class="dropdown-header">
-                                    Alerts Center
-                                </h6>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-primary">
-                                            <i class="fas fa-file-alt text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 12, 2019</div>
-                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-success">
-                                            <i class="fas fa-donate text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 7, 2019</div>
-                                        $290.29 has been deposited into your account!
-                                    </div>
-                                </a>
-                                <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="mr-3">
-                                        <div class="icon-circle bg-warning">
-                                            <i class="fas fa-exclamation-triangle text-white"></i>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="small text-gray-500">December 2, 2019</div>
-                                        Spending Alert: We've noticed unusually high spending for your account.
-                                    </div>
-                                </a>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                            </div>
-                        </li>
-                   
-                        <div class="topbar-divider d-none d-sm-block"></div>
-
+                       
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Penyewa</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+								
+								<!-- Memanggil data username dari session -->
+								
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION['username'];?></span>
+                                <!-- <img class="img-profile rounded-circle"
+                                    src="img/undraw_profile.svg"> -->
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="?url=profil">
-                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Profil
-                                </a>                        
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="?url=logout" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -255,15 +212,16 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Konfirmasi</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+				<!-- Tombol Logout-->
+                <div class="modal-body">Apakah anda yakin ingin logout?</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="?url=logout">Logout</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
                 </div>
             </div>
         </div>
