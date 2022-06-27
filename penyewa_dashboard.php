@@ -8,5 +8,5 @@
     <meta name="author" content="">
     <title>Gedung Serbaguna Bahari Sejahtera</title>
 
-    <h4> Selamat Datang <span class="mr-2 d-none d-lg-inline text-gray-600 big"><?=$_SESSION['username'];?></span> </h4> 
+    <h4> Selamat Datang <?=$_SESSION['username'];?> <span class="mr-2 d-none d-lg-inline text-gray-600 big"></span> </h4> 
 </head>
