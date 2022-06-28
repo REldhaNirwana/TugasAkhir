@@ -52,10 +52,6 @@ if(isset($_SESSION["loggedin_admin"]) == true){
             <hr class="sidebar-divider my-0">
             <!-- Nav Item -->
             <li class="nav-item">
-                <a class="nav-link" href="?url=review_pengecekan">
-                    <span>Laporan Pengecekan</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
                     aria-expanded="true" aria-controls="collapse">
                     <span>Jadwal Penyewaan</span>
@@ -70,6 +66,10 @@ if(isset($_SESSION["loggedin_admin"]) == true){
             <li class="nav-item">
                 <a class="nav-link" href="?url=review_transaksi">
                     <span>Manajemen Transaksi</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?url=review_pengecekan">
+                    <span>Laporan Pengecekan</span></a>
             </li>
             
             <!-- Divider -->

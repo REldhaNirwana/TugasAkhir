@@ -59,10 +59,12 @@ $s = $q->num_rows;
         <option value="12">Desember</option>
        </select>
        <button type="submit" name="submit" class="btn btn-primary">Tampilkan</button>
+       
+      
       </form>
      </div>
     </div>
-
+    <!-- <button href="eksport.php" name="submit" class="btn btn-success ms-1">Eksport ke Excel</button> -->
     <div class="mt-3" style="max-height: 340px; overflow-y: auto;">
      <table class="table table-bordered">
       <tr>

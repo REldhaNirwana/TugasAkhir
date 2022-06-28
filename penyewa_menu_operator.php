@@ -21,12 +21,10 @@
             case'penyewa_sewabiasa.php' :
                 include"penyewa_sewabiasa.php";
                 break;
-            case'penyewa_bayarsewapaket.php' :
-                include"penyewa_bayarsewapaket.php";
+            case'penyewa_bayarsewa.php' :
+                include"penyewa_bayarsewa.php";
                 break;
-            case'penyewa_bayarsewabiasa.php' :
-                include"penyewa_bayarsewabiasa.php";
-                break;
+            
             case'penyewa_jadwal' :                    
                 include"penyewa_jadwal.php";
                 break;

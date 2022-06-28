@@ -72,12 +72,12 @@ if(isset($_SESSION["loggedin_review"]) == true){
                     <span>Manajemen Jadwal</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="?url=admin_transaksi">
-                    <span>Manajemen Transaksi</span></a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="?url=admin_datapenyewa">
                     <span>Manajemen Data Penyewaan</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?url=admin_transaksi">
+                    <span>Manajemen Transaksi</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="?url=admin_laporan_keuangan">

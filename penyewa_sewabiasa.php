@@ -128,7 +128,7 @@ if (isset($_POST['sewa'])) {
                 </div>
             </div>
             <div class="text-center">
-            <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
+            <a href="?url=penyewa_dashboard" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="sewa">Sewa</button>
                 
                
@@ -194,7 +194,7 @@ if (isset($_POST['sewa'])) {
 					
 				
                         <a href="penyewa_hapus_sewa.php?id_sewa=<?= $hasil['id_sewa'];?>" class="btn btn-danger btn-sm" style="font-weight: 600;" onclick="return confirm('Apakah anda yakin ingin membatalkan penyewaan ?');"><i class="bi bi-trash-fill"></i>&nbsp;Batal Sewa</a>
-                        <a href="penyewa_index.php?url=penyewa_bayarsewapaket.php&id_sewa=<?= $hasil['id_sewa'];?>&totalbayar=<?= $totalbayar ?>&nama_penyewa=<?= $hasil['nama_penyewa']; ?>&tanggalpakai=<?= $hasil['tanggalpakai']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-trash-fill"></i>&nbsp;Bayar</a>
+                        <a href="penyewa_index.php?url=penyewa_bayarsewa.php&id_sewa=<?= $hasil['id_sewa'];?>&totalbayar=<?= $totalbayar ?>&nama_penyewa=<?= $hasil['nama_penyewa']; ?>&tanggalpakai=<?= $hasil['tanggalpakai']; ?>" class="btn btn-warning btn-sm" style="font-weight: 600;"><i class="bi bi-trash-fill"></i>&nbsp;Bayar</a>
                     </td>
                 </tr>
             <?php } ?>

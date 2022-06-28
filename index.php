@@ -133,7 +133,7 @@ require 'function.php';
 					<div class="dropdown-content">
 						<a href="login.php">Penyewa</a>
 						<a href="login_admin.php">Admin</a>
-						<a href="login_review.php">Review</a>
+						<a href="login_review.php">Pengecek</a>
 					</div>
 				</div>
             </div>

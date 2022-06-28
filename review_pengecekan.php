@@ -79,7 +79,7 @@ if (isset($_POST['reviewsend'])) {
                 </div>
             </div>
             <div class="text-center">
-            <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
+            
                 <button type="submit" class="btn btn-primary" name="reviewsend">Kirim</button>
                 
                

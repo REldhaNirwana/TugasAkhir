@@ -59,7 +59,6 @@ require 'function.php';
 		</div>
         </div>
 		
-		
 		<div class="card shadow mb-4">
         <div class="card-header py-3">
             <h4 class="m-0 font-weight-bold text-primary">Sewa Biasa</h4>
@@ -97,7 +96,7 @@ require 'function.php';
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_sewa']; ?></td>
                     <td><?= $hasil['nama_penyewa']; ?></td>
-                    <td><?= $hasil['id_gedung']; ?></td>
+                    <!-- <td><?= $hasil['id_gedung']; ?></td> -->
                     <!-- <td><?= $namafasilitas[1]; ?></td> -->
                     <td><?= $hasil['tanggalpakai']; ?></td>
                     <td><?= $hasil['tanggaltempo']; ?></td>

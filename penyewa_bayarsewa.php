@@ -8,7 +8,7 @@ if (isset($_POST['kirim'])) {
     if (bayarsewa($_POST) > 0) {
          echo "<script>
                 alert('Terima Kasih. Pembayaran anda segera kami validasi');
-                document.location.href ='?url=penyewa_bayarsewapaket.php&id_sewa=PEMBAYARAN BERHASIL&totalbayar=0';
+                document.location.href ='?url=penyewa_bayarsewa.php&id_sewa=PEMBAYARAN BERHASIL&totalbayar=0';
             </script>";
     
     } else {
@@ -78,7 +78,7 @@ if (isset($_POST['kirim'])) {
                 </div>
             </div>
             <div class="text-center">
-            <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
+            <a href="?url=penyewa_dashboard" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="kirim">Kirim</button>
                
             </div>

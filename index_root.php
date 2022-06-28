@@ -18,7 +18,7 @@
         <div class="masthead">
             <div class="masthead-content text-white">
                 <div class="container-fluid px-4 px-lg-0">
-                    <h1 class="fst-italic lh-1 mb-4"><a style="color:#297ecf">R</a>oot User Role Mode - Registrasi</h1>
+                    <h1 class="fst-italic lh-1 mb-4"><a style="color:#297ecf">R</a>egistrasi</h1>
                     <p class="mb-5">Kembali ke landing utama <a style="color:white" href="index.php"> Klik Disini</a></p>
                    
                 </div>
@@ -27,18 +27,12 @@
 					<div class="dropdown-content">
 						<a href="register.php">Penyewa</a>
 						<a href="register_admin.php">Admin</a>
-						<a href="register_review.php">Review</a>
+						<a href="register_review.php">Pengecek Fasilitas</a>
 					</div>
 				</div>
             </div>
         </div>
-        <div class="social-icons">
-            <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-                <a class="btn btn-dark m-3" href="#!"><i class="fab fa-twitter"></i></a>
-                <a class="btn btn-dark m-3" href="https://wa.me/6282131212001"><i class="fab fa-whatsapp"></i></a>
-                <a class="btn btn-dark m-3" href="https://instagram.com/faryap1901"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="js/scripts.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>

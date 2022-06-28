@@ -157,7 +157,7 @@ function sewa($data){
 	$chk="";  
 	foreach($checkbox1 as $chk1)  
     {  
-      $chk .= $chk1."-";  
+      $chk .= $chk1.",";  
     }  
 	
 	$a = array($chk);

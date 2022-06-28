@@ -92,7 +92,7 @@ if(isset($_SESSION["loggedin_review"]) == true){
                 </div>
             </li>
 			<li class="nav-item">
-                <a class="nav-link" href="?url=penyewa_bayarsewapaket.php&id_sewa=SILAHKAN KE MENU SEWA&totalbayar=0">
+                <a class="nav-link" href="?url=penyewa_bayarsewa.php&id_sewa=SILAHKAN KE MENU SEWA&totalbayar=0">
                     <span>Riwayat Pembayaran</span></a>
             </li>
             <li class="nav-item">
@@ -132,7 +132,7 @@ if(isset($_SESSION["loggedin_review"]) == true){
 								
 								<!-- Memanggil data username dari session -->
 								
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$_SESSION['username'];?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 big"><?=$_SESSION['username'];?></span>
                                 <!-- <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg"> -->
                             </a>
