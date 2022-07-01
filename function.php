@@ -207,7 +207,6 @@ function sewapaket($data){
     return mysqli_affected_rows($koneksi);
 
 }
-
 function reviewsend($data){
     global $koneksi;
 	
@@ -216,8 +215,27 @@ function reviewsend($data){
 	$username = htmlspecialchars($data['username']);
 	$denda = htmlspecialchars($data['denda']);
 	$status = htmlspecialchars($data['status']);
+	$foto = upload();
 	
-    $sql = "INSERT INTO review VALUES ('$id_sewa','$reviewdata','$username','$denda','$status')";
+    $sql = "INSERT INTO review VALUES ('$id_sewa','$reviewdata','$username','$denda','$status','$foto')";
+
+    mysqli_query($koneksi, $sql);
+    return mysqli_affected_rows($koneksi);
+
+}
+
+
+function reviewsendsesudah($data){
+    global $koneksi;
+	
+    $id_sewa = htmlspecialchars($data['id_sewa']);
+    $reviewdata = htmlspecialchars($data['reviewdata']);
+	$username = htmlspecialchars($data['username']);
+	$denda = htmlspecialchars($data['denda']);
+	$status = htmlspecialchars($data['status']);
+	$foto = upload();
+	
+    $sql = "INSERT INTO review_sesudah VALUES ('$id_sewa','$reviewdata','$username','$denda','$status','$foto')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
@@ -237,8 +255,9 @@ function bayarsewa($data){
 	$totalbayar = htmlspecialchars($data['totalbayar']);
 	$nama_penyewa = htmlspecialchars($data['nama_penyewa']);
 	$tanggalpakai = htmlspecialchars($data['tanggalpakai']);
+	$tanggaltempo = htmlspecialchars($data['tanggaltempo']);
 
-    $sql = "INSERT INTO transaksi_sewa VALUES ('$id_bayar','$id_sewa','$norek','$foto','$username','$status','$totalbayar','$nama_penyewa','$tanggalpakai')";
+    $sql = "INSERT INTO transaksi_sewa VALUES ('$id_bayar','$id_sewa','$norek','$foto','$username','$status','$totalbayar','$nama_penyewa','$tanggalpakai','$tanggaltempo')";
 
     mysqli_query($koneksi, $sql);
     return mysqli_affected_rows($koneksi);
@@ -268,7 +287,7 @@ function reviewupdate($data){
 	$status= htmlspecialchars($data['status']);
 	
 
-    $sql = "UPDATE review SET denda= '$denda',reviewdata= '$reviewdata', status='$status' WHERE id_sewa = '$id_sewa'";
+    $sql = "UPDATE review_sesudah SET denda= '$denda',reviewdata= '$reviewdata', status='$status' WHERE id_sewa = '$id_sewa'";
 
     mysqli_query($koneksi, $sql);
 

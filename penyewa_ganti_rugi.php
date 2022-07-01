@@ -1,10 +1,3 @@
-<!-- Begin Page Content -->
-<?php
-// Memanggil atau membutuhkan file function.php
-require 'function.php';
-
-?>
-			
 
 <div class="container-fluid">
 <div class="card">
@@ -22,6 +15,8 @@ require 'function.php';
                 <th>No</th>
                 <th>ID Sewa</th>
                 <th>Review</th>
+				<th>Foto Sebelum</th>
+				<th>Foto Sesudah</th>
                 <th>Denda</th>
                 </tr>
             </thead>
@@ -31,7 +26,7 @@ require 'function.php';
             <?php 
             $no = 1;
            
-            $tampil = mysqli_query($koneksi, "SELECT * FROM review WHERE username='$_SESSION[username]' ORDER BY id_sewa DESC");
+            $tampil = mysqli_query($koneksi, "SELECT * FROM review_sesudah WHERE username='$_SESSION[username]' && status='1' ORDER BY id_sewa DESC");
 
             while($hasil = $tampil->fetch_assoc()){
             ?>
@@ -40,6 +35,14 @@ require 'function.php';
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_sewa']; ?></td>
                     <td><?= $hasil['reviewdata']; ?></td>
+					<?php 
+					$tampil1 = mysqli_query($koneksi, "SELECT * FROM review ORDER BY id_sewa DESC");
+					while($hasil1 = $tampil1->fetch_assoc()){
+					?>
+					<td><a href="img/<?= $hasil1['foto']; ?>">Klik Disini</a></td>
+					<?php } ?>
+					
+					<td><a href="img/<?= $hasil['foto']; ?>">Klik Disini</a></td>
 					<td>Rp <?= $hasil['denda']; ?></td>
 					
 					

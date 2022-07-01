@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <?php
 // Memanggil atau membutuhkan file function.php
-require 'function.php';
+
 
 //Jika fungsi tambah lebih dari 0/data tersimpan, maka munculkan alert dibawah
 if (isset($_POST['kirim'])) {
@@ -35,6 +35,7 @@ if (isset($_POST['kirim'])) {
 			<input type="hidden" class="form-control" name="nama_penyewa" value="<?php echo $_GET['nama_penyewa'];?>" required>
 			<!-- post tanggalpakai -->
 			<input type="hidden" class="form-control" name="tanggalpakai" value="<?php echo $_GET['tanggalpakai'];?>" required>
+			<input type="hidden" class="form-control" name="tanggalpakai" value="<?php echo $_GET['tanggaltempo'];?>" required>
 			
             <div class="row mb-3">
                 <label for="alamat_penyewa" class="col-sm-2 col-form-label">ID Sewa</label>
@@ -62,7 +63,7 @@ if (isset($_POST['kirim'])) {
             <div class="row mb-3">
                 <label for="nama_penyewa" class="col-sm-2 col-form-label">No. Rekening</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="norek" placeholder="Masukkan Nomer Rekening Anda" required>
+                    <input type="text" class="form-control" name="norek" placeholder="Masukkan No Rekening Anda" required>
                 </div>
             </div> 
 			<div class="row mb-3">
@@ -78,7 +79,7 @@ if (isset($_POST['kirim'])) {
                 </div>
             </div>
             <div class="text-center">
-            <a href="?url=penyewa_dashboard" class="btn btn-secondary">Kembali</a>
+            <a href="?url=admin_paket" class="btn btn-secondary">Kembali</a>
                 <button type="submit" class="btn btn-primary" name="kirim">Kirim</button>
                
             </div>

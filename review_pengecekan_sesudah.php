@@ -5,10 +5,10 @@
 
 //Jika fungsi tambah lebih dari 0/data tersimpan, maka munculkan alert dibawah
 if (isset($_POST['reviewsend'])) {
-    if (reviewsend($_POST) > 0) {
+    if (reviewsendsesudah($_POST) > 0) {
          echo "<script>
                 alert('Laporan berhasil terkirim!');
-                document.location.href ='?url=review_pengecekan';
+                document.location.href ='?url=review_pengecekan_sesudah';
             </script>";
     
     } else {
@@ -25,8 +25,8 @@ if (isset($_POST['reviewsend'])) {
     <div class="card-body">
         <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h4 class="m-0 font-weight-bold text-primary">Form Laporan Pengecekan Sebelum</h4>
-			<h6 class="m-0 font-weight text">*Hanya ID Sewa yang sukses</h6>
+            <h4 class="m-0 font-weight-bold text-primary">Form Laporan Pengecekan Sesudah</h4>
+			<h6 class="m-0 font-weight text">*Hanya ID Sewa Yang Sudah di Review Sebelum</h6>
         </div>
         <div class="card-body">
         <!-- Horizontal Form -->
@@ -39,7 +39,7 @@ if (isset($_POST['reviewsend'])) {
 					<!-- Pilih id sewa sesuai status1 -->
 						<option value="0">Pilih salah satu</option>
 						<?php
-						$sql="SELECT * FROM transaksi_sewa WHERE status='1'";
+						$sql="SELECT * FROM review";
 						$result = mysqli_query($koneksi,$sql);
 						while($row = mysqli_fetch_array($result)) 
 						{
@@ -55,7 +55,7 @@ if (isset($_POST['reviewsend'])) {
 					</select>
 					<!-- Buat call data lagi-->
 					<?php
-						$sql="SELECT * FROM transaksi_sewa WHERE status='1'";
+						$sql="SELECT * FROM review";
 						$result = mysqli_query($koneksi,$sql);
 						while($row = mysqli_fetch_array($result)) 
 						{
@@ -122,7 +122,7 @@ if (isset($_POST['reviewsend'])) {
             <?php 
             $no = 1;
            
-            $tampil = mysqli_query($koneksi, "SELECT * FROM review ORDER BY id_sewa DESC");
+            $tampil = mysqli_query($koneksi, "SELECT * FROM review_sesudah ORDER BY id_sewa DESC");
 
             while($hasil = $tampil->fetch_assoc()){
             ?>

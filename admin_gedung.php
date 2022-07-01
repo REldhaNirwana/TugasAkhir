@@ -1,7 +1,4 @@
-<?php 
-require 'function.php';
 
-?>
 
 <div class="container-fluid">
 <div class="card">

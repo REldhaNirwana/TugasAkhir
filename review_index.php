@@ -1,7 +1,7 @@
 <?php
 // Sesi dimulai
 session_start();
- 
+ require 'function.php';
 // Cek sesi, kalau gk ada kembali ke login
 if(!isset($_SESSION["loggedin_review"]) || $_SESSION["loggedin_review"] !== true){
     header("location: login_review.php?alert=logindulu");
@@ -38,7 +38,86 @@ if(isset($_SESSION["loggedin_admin"]) == true){
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 </head>
+<!-- Bootstrap dan jquery Modal -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
+<!-- Intruksi modal auto show -->
+
+
+<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Notifikasi</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+				<table class="table table-bordered" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+				<th>No</th>
+                <th>ID Bayar</th>
+				<th>Total</th>
+                <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+			
+			<!-- Get data dengan status sewa 0 (pending) -->
+            <?php 
+            $no = 1;
+
+			$tampil = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa WHERE status=1 ORDER BY id_bayar DESC");
+
+            while($hasil = mysqli_fetch_array($tampil)){
+            ?>
+                       
+                <tr>
+                    <td><?= $no++; ?></td>
+                    <td><?= $hasil['id_bayar']; ?></td>
+					<td>Rp <?= $hasil['totalbayar']; ?></td>
+					
+					<!--  intruksi status --> 
+					<td> <a><?php if ($hasil['status'] == 1) : ?>
+                            <span class="badge badge-pill badge-success">Success</span>
+                         <?php elseif ($hasil['status'] == 2) : ?>
+                           <span class="badge badge-pill badge-danger">Ditolak</span>
+						 <?php else : ?>
+                           <span class="badge badge-pill badge-warning">Pending</span>
+                         <?php endif ?></a>
+                    </td>
+                </tr>
+				
+            <?php } ?>
+            </tbody>
+        </table>
+		<th colspan="4"><center><a href="review_index.php?url=review_transaksi">Lihat selengkapnya</a></center></th>
+
+		
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="logoutModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Konfirmasi</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+				Apakah anda yakin ingin logout?</br></br>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
+                    <a class="btn btn-primary" href="logout.php">Logout</a>
+                </div>	
+            </div>
+        </div>
+    </div>
+</div>
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -51,6 +130,18 @@ if(isset($_SESSION["loggedin_admin"]) == true){
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsee"
+                    aria-expanded="true" aria-controls="collapse">
+                    <span>Laporan Pengecekan</span>
+                </a>
+                <div id="collapsee" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="?url=review_pengecekan">Sebelum</a>
+                        <a class="collapse-item" href="?url=review_pengecekan_sesudah">Sesudah</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse"
                     aria-expanded="true" aria-controls="collapse">
@@ -67,10 +158,7 @@ if(isset($_SESSION["loggedin_admin"]) == true){
                 <a class="nav-link" href="?url=review_transaksi">
                     <span>Manajemen Transaksi</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="?url=review_pengecekan">
-                    <span>Laporan Pengecekan</span></a>
-            </li>
+            
             
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -89,31 +177,32 @@ if(isset($_SESSION["loggedin_admin"]) == true){
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
-                    <!-- <form class="form-inline"> -->
+                    
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                         </button>
-                    <!-- </form> -->
-
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Messages -->
-                       
-
+						<li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" data-toggle="modal" data-target="#myModal">
+                                <i class="fa fa-bell"></i>
+                            </a>
+                        </li>
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 big"><?=$_SESSION['username'];?></span>
-                                <!-- <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg"> -->
+                                
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
                                
-                                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">
+                                
+                                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>

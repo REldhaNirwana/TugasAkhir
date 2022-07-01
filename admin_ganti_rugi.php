@@ -1,7 +1,6 @@
 <!-- Begin Page Content -->
 <?php
 // Memanggil atau membutuhkan file function.php
-require 'function.php';
 
 //Jika fungsi tambah lebih dari 0/data tersimpan, maka munculkan alert dibawah
 if (isset($_POST['reviewsend'])) {
@@ -38,6 +37,8 @@ if (isset($_POST['reviewsend'])) {
                 <th>ID Sewa</th>
                 <th>Review</th>
                 <th>Denda</th>
+				<th>Foto Sebelum</th>
+				<th>Foto Sesudah</th>
 				<th>Status</th>
                 <th>Action</th>
                 </tr>
@@ -48,7 +49,7 @@ if (isset($_POST['reviewsend'])) {
             <?php 
             $no = 1;
            
-            $tampil = mysqli_query($koneksi, "SELECT * FROM review ORDER BY id_sewa DESC");
+            $tampil = mysqli_query($koneksi, "SELECT * FROM review_sesudah ORDER BY id_sewa DESC");
 
             while($hasil = $tampil->fetch_assoc()){
             ?>
@@ -58,6 +59,16 @@ if (isset($_POST['reviewsend'])) {
                     <td><?= $hasil['id_sewa']; ?></td>
                     <td><?= $hasil['reviewdata']; ?></td>
 					<td>Rp <?= $hasil['denda']; ?></td>
+					
+					<!-- /.Fungsi menampilkan foto sebelum -->
+					<?php 
+					$tampil1 = mysqli_query($koneksi, "SELECT * FROM review ORDER BY id_sewa DESC");
+					while($hasil1 = $tampil1->fetch_assoc()){
+					?>
+					<td><a href="img/<?= $hasil1['foto']; ?>">Klik Disini</a></td>
+					<?php } ?>
+					
+					<td><a href="img/<?= $hasil['foto']; ?>">Klik Disini</a></td>
 					<td><a><?php if ($hasil['status'] == 1) : ?>
                             <span class="badge badge-pill badge-success">Success</span>
                          <?php elseif ($hasil['status'] == 2) : ?>

@@ -1,10 +1,3 @@
-
-
-<?php
-// Memanggil atau membutuhkan file function.php
-require 'function.php';
-?>
-
 <?php 
 $thn = 2022;
 if (isset($_POST['submit'])) {
@@ -111,74 +104,7 @@ $s12 = $q12->num_rows;
         </div>
 		
 
-<!-- Bootstrap dan jquery Modal -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-<!-- Intruksi modal auto show -->
-<script>
-	$(document).ready(function(){
-		$("#myModal").modal('show');
-	});
-</script>
-
-
-<div id="myModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Notifikasi</h5>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-				<table class="table table-bordered" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-				<th>No</th>
-                <th>ID Bayar</th>
-				<th>Total</th>
-                <th>Status</th>
-                </tr>
-            </thead>
-            <tbody>
-			
-			<!-- Get data dengan status sewa 0 (pending) -->
-            <?php 
-            $no = 1;
-
-            $tampil = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa INNER JOIN sewa on transaksi_sewa.id_sewa = sewa.id_sewa
-              WHERE status=0 ORDER BY id_bayar DESC");
-
-            while($hasil = mysqli_fetch_array($tampil)){
-            ?>
-                       
-                <tr>
-                    <td><?= $no++; ?></td>
-                    <td><?= $hasil['id_bayar']; ?></td>
-					<td>Rp <?= $hasil['totalbayar']; ?></td>
-					
-					<!--  intruksi status --> 
-					<td> <a><?php if ($hasil['status'] == 1) : ?>
-                            <span class="badge badge-pill badge-success">Success</span>
-                         <?php elseif ($hasil['status'] == 2) : ?>
-                           <span class="badge badge-pill badge-danger">Ditolak</span>
-						 <?php else : ?>
-                           <span class="badge badge-pill badge-warning">Pending</span>
-                         <?php endif ?></a>
-                    </td>
-                </tr>
-				
-            <?php } ?>
-            </tbody>
-        </table>
-		<th colspan="4"><center><a href="admin_index.php?url=admin_transaksi">Lihat selengkapnya</a></center></th>
-
-		
-            </div>
-        </div>
-    </div>
-</div>
 
 		
 </body>

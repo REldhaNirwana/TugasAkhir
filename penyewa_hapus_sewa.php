@@ -1,6 +1,6 @@
 <?php
 
-require 'function.php';
+// require 'function.php';
 if(isset($_GET['id_sewa'])) {
     $id_sewa =htmlspecialchars($_GET["id_sewa"]);
     $sql ="delete from sewa where id_sewa = '$id_sewa'";

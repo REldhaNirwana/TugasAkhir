@@ -18,7 +18,9 @@
 			case'review_pengecekan' :
                 include"review_pengecekan.php";
                 break; 
-
+            case'review_pengecekan_sesudah' :
+                include"review_pengecekan_sesudah.php";
+                break;
             default:
             echo "<center><h3>Maaf</h3></center>";
             break;

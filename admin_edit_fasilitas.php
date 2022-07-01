@@ -1,6 +1,6 @@
 <?php
 // Memanggil atau membutuhkan file function.php
-require 'function.php';
+// require 'function.php';
 
     $id_fasilitas = $_GET['id_fasilitas'];
     $tampil = mysqli_query($koneksi, "SELECT * FROM fasilitas WHERE id_fasilitas = '$id_fasilitas'");

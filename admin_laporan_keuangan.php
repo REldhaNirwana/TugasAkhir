@@ -1,19 +1,17 @@
-<?php
-// Memanggil atau membutuhkan file function.php
-require 'function.php';
-?>
+
 
 <?php 
 
 if (isset($_POST['submit'])) {
  $bln = date($_POST['bulan']);
-  if (!empty($bln)) {
-    // perintah tampil data berdasarkan periode bulan
-    $q = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa WHERE MONTH(tanggalpakai)= '$bln' && status=1");
-  } else {
-    // perintah tampil semua data
-    $q = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa WHERE status=1");
-  }
+
+ if (!empty($bln)) {
+  // perintah tampil data berdasarkan periode bulan
+  $q = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa WHERE MONTH(tanggalpakai)= '$bln' && status=1");
+ } else {
+  // perintah tampil semua data
+  $q = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa WHERE status=1");
+ }
 } else {
  // perintah tampil semua data
  $q = mysqli_query($koneksi, "SELECT * FROM transaksi_sewa WHERE status=1");
@@ -59,12 +57,10 @@ $s = $q->num_rows;
         <option value="12">Desember</option>
        </select>
        <button type="submit" name="submit" class="btn btn-primary">Tampilkan</button>
-       
-      
       </form>
      </div>
     </div>
-    <!-- <button href="eksport.php" name="submit" class="btn btn-success ms-1">Eksport ke Excel</button> -->
+
     <div class="mt-3" style="max-height: 340px; overflow-y: auto;">
      <table class="table table-bordered">
       <tr>
@@ -72,6 +68,7 @@ $s = $q->num_rows;
        <th>ID Sewa</th>
        <th>Nama Penyewa</th>
        <th>Tgl. Pakai</th>
+	   <th>Tgl. Tempo</th>
 	   <th>Total Bayar</th>
       </tr>
 
@@ -89,6 +86,7 @@ $s = $q->num_rows;
        <td><?= ucwords($r['id_sewa']) ?></td>
        <td><?= $r['nama_penyewa'] ?></td>
        <td><?= date('d-M-Y', strtotime($r['tanggalpakai'])) ?></td>
+	   <td><?= date('d-M-Y', strtotime($r['tanggaltempo'])) ?></td>
 	   <td>Rp <?= $r['totalbayar'] ?></td>
       </tr>
   
@@ -96,7 +94,8 @@ $s = $q->num_rows;
       }
       ?>
 	  <tr>
-      <th colspan="4">Total Pendapatan</th>
+      <th colspan="5">Total Pendapatan</th>
+	  
       <th>Rp <?= $totbayar ?></th>
      </tr>
 

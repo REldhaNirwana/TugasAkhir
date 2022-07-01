@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <?php
 // Memanggil atau membutuhkan file function.php
-require 'function.php';
+// require 'function.php';
 
 //Jika fungsi tambah lebih dari 0/data tersimpan, maka munculkan alert dibawah
 if (isset($_POST['us'])) {
@@ -37,6 +37,7 @@ if (isset($_POST['us'])) {
                 <th>No</th>
                 <th>ID Bayar</th>
                 <th>ID Sewa</th>
+				<th>Nama Penyewa</th>
 				<th>Total</th>
 				<th>Bukti Pembayaran</th>
 				
@@ -60,6 +61,7 @@ if (isset($_POST['us'])) {
                     <td><?= $no++; ?></td>
                     <td><?= $hasil['id_bayar']; ?></td>
                     <td><?= $hasil['id_sewa']; ?></td>
+					<td><?= $hasil['nama_penyewa']; ?></td>
 					<td>Rp <?= $hasil['totalbayar']; ?></td>
 					<td><a href="img/<?= $hasil['foto']; ?>">Klik Disini</a></td>
 					

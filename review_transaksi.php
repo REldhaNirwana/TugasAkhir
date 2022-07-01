@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <?php
 // Memanggil atau membutuhkan file function.php
-require 'function.php';
+// require 'function.php';
 
 //Jika fungsi tambah lebih dari 0/data tersimpan, maka munculkan alert dibawah
 if (isset($_POST['us'])) {
